@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 from lifebartenders.views.site import site
 from lifebartenders.views.admin import admin
 
@@ -12,6 +13,9 @@ if os.path.isfile(dotenv_path):
 
 app = Flask(__name__)
 app.config.from_object('config')
+
+db = SQLAlchemy()
+db.init_app(app)
 
 
 @app.errorhandler(404)
