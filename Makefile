@@ -22,13 +22,16 @@ start:
 	${DOCKER_CMD} python app.py
 
 migrate-init:
-	${DOCKER_CMD} flask db init
+	${DOCKER_CMD} python lifebartenders/manager.py db init
 
 migrate:
-	${DOCKER_CMD} flask db migrate
+	${DOCKER_CMD} python lifebartenders/manager.py db migrate
 
 migrate-apply:
-	${DOCKER_CMD} flask db upgrade
+	${DOCKER_CMD} python lifebartenders/manager.py db upgrade
 
 migrate-rollback:
-	${DOCKER_CMD} flask db downgrade -1
+	${DOCKER_CMD} python lifebartenders/manager.py db downgrade -1
+
+seed:
+	${DOCKER_CMD} python lifebartenders/manager.py seed
