@@ -9,11 +9,9 @@ class BaseModel:
 class User(db.Model, BaseModel, UserMixin):
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     username = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    email_confirmed_at = db.Column(db.DateTime())
 
 
 class State(db.Model, BaseModel):
