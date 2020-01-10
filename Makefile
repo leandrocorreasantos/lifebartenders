@@ -19,7 +19,7 @@ setup: upgrade-pip
 	${DOCKER_CMD} pip install -r requirements.txt
 
 start:
-	${DOCKER_CMD} python app.py
+	${DOCKER_CMD} python lifebartenders/app.py
 
 migrate-init:
 	${DOCKER_CMD} python lifebartenders/manager.py db init
