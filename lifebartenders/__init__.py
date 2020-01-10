@@ -10,7 +10,7 @@ if os.path.isfile(dotenv_path):
 
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_object('lifebartenders.config')
 
 db = SQLAlchemy()
 db.init_app(app)
