@@ -18,8 +18,11 @@ def seed():
     # seed user
     user = User(**{
         'username': 'admin',
-        'password': user_manager.hash_password('123456'),
-        'email': 'admin@lifebartenders.com'}
+        'password': user_manager.hash_password('Life#bartenders'),
+        'email': 'admin@lifebartenders.com',
+        'active': True,
+        'email_confirmed_at': True
+        }
     )
     db.session.add(user)
     db.session.commit()

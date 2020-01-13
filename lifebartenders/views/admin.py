@@ -1,8 +1,7 @@
 from datetime import datetime
 from flask import Blueprint, render_template
-from flask_user import UserManager, login_required
-from lifebartenders import app, db
-from lifebartenders.models import user_manager, Event
+from flask_user import login_required
+from lifebartenders.models import Event
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
@@ -10,6 +9,7 @@ admin = Blueprint('admin', __name__, url_prefix='/admin')
 
 @admin.route('/')
 @admin.route('/dashboard')
+@login_required
 def dashboard():
     agendas = Event.query.filter(Event.date > datetime.now()).all()
     eventos = Event.query.filter(Event.date <= datetime.now()).all()
@@ -27,5 +27,6 @@ def agenda():
 
 
 @admin.route('/eventos')
+@login_required
 def eventos():
     return render_template('admin/eventos.html')
