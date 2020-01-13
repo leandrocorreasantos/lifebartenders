@@ -1,6 +1,8 @@
 from datetime import datetime
 from flask import Blueprint, render_template
-from lifebartenders.models import Event
+from flask_user import UserManager, login_required
+from lifebartenders import app, db
+from lifebartenders.models import user_manager, Event
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
@@ -19,6 +21,7 @@ def dashboard():
 
 
 @admin.route('/agenda')
+@login_required
 def agenda():
     return render_template('admin/agenda.html')
 
