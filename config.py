@@ -19,11 +19,11 @@ USER_ENABLE_USERNAME = True
 USER_REQUIRE_RETYPE_PASSWORD = False
 
 # Flask-Mail SMTP server settings
-MAIL_SERVER = 'smtp.gmail.com'
-MAIL_PORT = 465
+MAIL_SERVER = os.environ.get('MAIL_SERVER')
+MAIL_PORT = int(os.environ.get('MAIL_PORT'))
 MAIL_USE_SSL = True
 MAIL_USE_TLS = False
-MAIL_USERNAME = 'email@example.com'
-MAIL_PASSWORD = 'password'
-MAIL_DEFAULT_SENDER = '"MyApp" <noreply@example.com>'
+MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
 MAIL_DEBUG = False
