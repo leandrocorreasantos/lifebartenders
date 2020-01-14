@@ -1,5 +1,5 @@
-from lifebartenders import db
-from flask_user import UserMixin
+from lifebartenders import app, db
+from flask_user import UserMixin, UserManager
 
 
 class BaseModel:
@@ -11,7 +11,12 @@ class User(db.Model, BaseModel, UserMixin):
 
     username = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
+    active = db.Column(db.Boolean(), default=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    email_confirmed_at = db.Column(db.Boolean, default=False)
+
+
+user_manager = UserManager(app, db, User)
 
 
 class State(db.Model, BaseModel):

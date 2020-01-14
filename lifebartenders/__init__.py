@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail
 
 
 dotenv_path = os.path.join(os.getcwd(), '.env')
@@ -14,3 +15,5 @@ app.config.from_object('lifebartenders.config')
 
 db = SQLAlchemy()
 db.init_app(app)
+
+mail = Mail(app)
