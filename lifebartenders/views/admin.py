@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from flask_user import login_required
 from lifebartenders.models import Event
 
@@ -23,7 +23,15 @@ def dashboard():
 @admin.route('/agenda')
 @login_required
 def agenda():
-    return render_template('admin/agenda.html')
+    page = int(request.args.get('page', 1))
+    offset = int(request.args.get('offset', 10))
+    agendas = Event.query.filter(
+        Event.date > datetime.now()
+    ).paginate(page, offset).items
+    return render_template(
+        'admin/agenda.html',
+        agendas=agendas
+    )
 
 
 @admin.route('/eventos')
