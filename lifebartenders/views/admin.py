@@ -23,15 +23,31 @@ def dashboard():
 @admin.route('/agenda')
 @login_required
 def agenda():
-    page = int(request.args.get('page', 1))
-    offset = int(request.args.get('offset', 10))
     agendas = Event.query.filter(
         Event.date > datetime.now()
-    ).paginate(page, offset).items
+    ).all()
     return render_template(
         'admin/agenda.html',
         agendas=agendas
     )
+
+
+@admin.route('/agenda/add')
+@login_required
+def add_agenda():
+    pass
+
+
+@admin.route('/agenda/edit/<id>')
+@login_required
+def edit_agenda(id):
+    pass
+
+
+@admin.route('/agenda/delete/<id>')
+@login_required
+def delete_agenda(id):
+    pass
 
 
 @admin.route('/eventos')
