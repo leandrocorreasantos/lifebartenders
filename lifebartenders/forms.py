@@ -1,5 +1,5 @@
 from wtforms import (
-    Form, DateTimeField, BooleanField,
+    Form, DateTimeField, BooleanField, SelectField,
     StringField, TextField, SubmitField, validators
 )
 
@@ -9,7 +9,7 @@ class EventForm(Form):
     description = TextField(u'Descrição')
     date = DateTimeField(u'Data', validators=[validators.DataRequired()])
     place = StringField(u'Local', validators=[validators.DataRequired()])
-    visible = BooleanField(u'Visível')
-    state = StringField(u'Estado')
-    city = StringField(u'Cidade')
+    visible = BooleanField(u'Visível', default="checked")
+    state = SelectField(u'Estado', choices=[])
+    city = SelectField(u'Cidade', choices=[])
     salva = SubmitField(u'Enviar')

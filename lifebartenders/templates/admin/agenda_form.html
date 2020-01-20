@@ -1,1 +1,22 @@
 {% extends "admin/base.html" %}
+{% block title_page %}Eventos{% endblock %}
+{% block title_section %}Adicionar Evento{% endblock %}
+{% block content %}
+    <div class="form-group">
+        <p>{{ form.title.label }}
+        {{ form.title() }}</p>
+        <p>{{ form.description.label }}
+        {{ form.description() }}</p>
+        <p>{{ form.date.label }}
+        {{ form.date() }}</p>
+        <p>{{ form.place.label }}
+        {{ form.place() }}</p>
+        <p>{{ form.visible.label }}
+        {{ form.visible() }}</p>
+        <p>{{ form.state.label }}
+        {{ form.state() }}</p>
+        <p>{{ form.city.label }}
+        {{ form.city() }}</p>
+        <p>{{ form.salva() }}</p>
+    </div>
+{% endblock %}
