@@ -1,7 +1,8 @@
 from datetime import datetime
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template
 from flask_user import login_required
 from lifebartenders.models import Event
+from lifebartenders.forms import EventForm
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
@@ -35,7 +36,11 @@ def agenda():
 @admin.route('/agenda/add')
 @login_required
 def add_agenda():
-    pass
+    form = EventForm()
+    return render_template(
+        'admin/agenda_form.html',
+        form=form
+    )
 
 
 @admin.route('/agenda/edit/<id>')

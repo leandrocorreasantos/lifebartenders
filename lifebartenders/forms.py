@@ -7,8 +7,9 @@ from wtforms import (
 class EventForm(Form):
     title = StringField(u'Título', validators=[validators.DataRequired()])
     description = TextField(u'Descrição')
-    date = DateTimeField(u'Data')
-    place = StringField(u'Local')
+    date = DateTimeField(u'Data', validators=[validators.DataRequired()])
+    place = StringField(u'Local', validators=[validators.DataRequired()])
     visible = BooleanField(u'Visível')
     state = StringField(u'Estado')
     city = StringField(u'Cidade')
+    salva = SubmitField(u'Enviar')
