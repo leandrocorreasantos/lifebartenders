@@ -1,11 +1,20 @@
 from datetime import datetime
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, jsonify
 from flask_user import login_required
-from lifebartenders.models import Event
+from lifebartenders.models import Event, City
 from lifebartenders.forms import EventForm
+from lifebartenders.schemas import Cities
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
+
+
+@admin.route('/_get_cities/<state_id>')
+def get_cities(state_id):
+    cities = []
+    cities = City.query.filter(City.state_id == state_id).all()
+    # import pdb; pdb.set_trace()
+    return jsonify(Cities(many=True, only=('id', 'name')).dump(cities))
 
 
 @admin.route('/')
