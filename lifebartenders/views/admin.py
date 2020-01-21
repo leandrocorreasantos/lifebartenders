@@ -13,7 +13,6 @@ admin = Blueprint('admin', __name__, url_prefix='/admin')
 def get_cities(state_id):
     cities = []
     cities = City.query.filter(City.state_id == state_id).all()
-    # import pdb; pdb.set_trace()
     return jsonify(Cities(many=True, only=('id', 'name')).dump(cities))
 
 
@@ -48,7 +47,8 @@ def add_agenda():
     form = EventForm()
     return render_template(
         'admin/agenda_form.html',
-        form=form
+        form=form,
+        title_action='Adicionar'
     )
 
 

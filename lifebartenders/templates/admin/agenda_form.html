@@ -1,6 +1,6 @@
 {% extends "admin/base.html" %}
 {% block title_page %}Eventos{% endblock %}
-{% block title_section %}Adicionar Evento{% endblock %}
+{% block title_section %}{{ title_action }} Evento{% endblock %}
 {% block content %}
     <div class="form-group">
         <p>{{ form.title.label }}
@@ -23,10 +23,31 @@
 
 {% block javascripts %}
 <script type="text/javascript">
-$('document').ready(function(){
-    $("#Event.states").change(function(){
-        // pegar dados
-    })
-})
+$(document).ready(function(){
+    // function to get cities by state_id
+    function update_cities(state_id){
+        $("select[name='city']").attr('disabled', 'disabled');
+        $.get(
+            "/admin/_get_cities/"+state_id,
+            function(resp){
+                $("select[name='city']").empty();
+                resp.forEach(function(item){
+                    $("select[name='city']").append(
+                        new Option(item.name, item.id)
+                    );
+                });
+                $("select[name='city']").removeAttr('disabled');
+            }
+        );
+    }
+
+    // init
+    update_cities($("select[name='state']").val());
+    // on change trigger
+    $("select[name='city']").attr('disabled', 'disabled');
+    $("select[name='state']").change(function(){
+        update_cities($(this).val());
+    });
+});
 </script>
 {% endblock %}
