@@ -1,7 +1,8 @@
 from marshmallow import Schema, fields
+from datetime import datetime
 
 
-class States(Schema):
+class StatesSchema(Schema):
     __tablename__ = 'states'
 
     id = fields.Integer()
@@ -9,9 +10,9 @@ class States(Schema):
     fs = fields.String()
 
 
-class Cities(Schema):
+class CitiesSchema(Schema):
     __tablename__ = 'cities'
 
     id = fields.Integer()
     name = fields.String()
-    state = fields.Nested('States')
+    state = fields.Nested('StatesSchema')

@@ -2,7 +2,9 @@
 {% block title_page %}Eventos{% endblock %}
 {% block title_section %}{{ title_action }} Evento{% endblock %}
 {% block content %}
+<form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
+        {{ form.hidden_tag() }}
         <p>{{ form.title.label }}
         {{ form.title() }}</p>
         <p>{{ form.description.label }}
@@ -17,8 +19,9 @@
         {{ form.state() }}</p>
         <p>{{ form.city.label }}
         {{ form.city() }}</p>
-        <p>{{ form.salva() }}</p>
+        <p>{{ form.submit() }}</p>
     </div>
+</form>
 {% endblock %}
 
 {% block javascripts %}
@@ -27,13 +30,15 @@ $(document).ready(function(){
     // function to get cities by state_id
     function update_cities(state_id){
         $("select[name='city']").attr('disabled', 'disabled');
-        $.get(
+        $.getJSON(
             "/admin/_get_cities/"+state_id,
             function(resp){
                 $("select[name='city']").empty();
                 resp.forEach(function(item){
+                    console.log(item);
                     $("select[name='city']").append(
-                        new Option(item.name, item.id)
+                        // new Option(item.name, item.id)
+                        $('<option>').attr('value', item.id).text(item.name)
                     );
                 });
                 $("select[name='city']").removeAttr('disabled');

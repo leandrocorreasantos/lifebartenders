@@ -1,9 +1,13 @@
 from datetime import datetime
-from flask import Blueprint, render_template, jsonify
+from flask import (
+    Blueprint, render_template, jsonify, request, redirect, url_for,
+    make_response
+)
 from flask_user import login_required
+from lifebartenders import db
 from lifebartenders.models import Event, City
 from lifebartenders.forms import EventForm
-from lifebartenders.schemas import Cities
+from lifebartenders.schemas import CitiesSchema
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
@@ -12,8 +16,13 @@ admin = Blueprint('admin', __name__, url_prefix='/admin')
 @admin.route('/_get_cities/<state_id>')
 def get_cities(state_id):
     cities = []
+    response = {}
     cities = City.query.filter(City.state_id == state_id).all()
-    return jsonify(Cities(many=True, only=('id', 'name')).dump(cities))
+    response = make_response(
+        jsonify(CitiesSchema(many=True, only=('id', 'name')).dump(cities))
+    )
+    response.content_type = 'application/json'
+    return response
 
 
 @admin.route('/')
@@ -41,10 +50,26 @@ def agenda():
     )
 
 
-@admin.route('/agenda/add')
+@admin.route('/agenda/add', methods=['GET', 'POST'])
 @login_required
 def add_agenda():
-    form = EventForm()
+    form = EventForm(request.form)
+    print(form.data)
+    if request.method == 'POST':
+        agenda = Event()
+        form.populate_obj(agenda)
+        print(agenda.__dict__)
+        if form.validate():
+            try:
+                db.session.add(agenda)
+                db.session.commit()
+            except Exception as e:
+                print('except: {}'.format(e))
+                db.session.rollback()
+            return redirect(url_for('admin.agenda'))
+        else:
+            print(form.errors)
+
     return render_template(
         'admin/agenda_form.html',
         form=form,
