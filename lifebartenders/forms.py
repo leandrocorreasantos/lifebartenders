@@ -1,10 +1,9 @@
 from flask_wtf import FlaskForm
 from wtforms import (
-    DateTimeField, BooleanField,
-    StringField, TextField, SubmitField, validators
+    DateTimeField, BooleanField, SelectField, TextAreaField,
+    StringField, SubmitField, validators
 )
-from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from lifebartenders.models import State, Event, City
+from lifebartenders.models import Event, State, City
 
 
 class EventForm(FlaskForm):
@@ -12,23 +11,16 @@ class EventForm(FlaskForm):
         model = Event
 
     title = StringField('Título', validators=[validators.DataRequired()])
-    description = TextField('Descrição')
-    date = DateTimeField('Data', validators=[validators.DataRequired()])
+    description = TextAreaField('Descrição')
+    date = DateTimeField('Data', format='%d/%m/%Y %H:%M')
     place = StringField('Local', validators=[validators.DataRequired()])
-    visible = BooleanField('Visível', default="checked")
-    state = QuerySelectField(
-        u'Estado', get_label='name',
-        query_factory=lambda: (State.query.all()),
-        id='Event.states'
+    visible = BooleanField('Visível', default=True)
+    state = SelectField(
+        'Estado', choices=[(s.id, s.name) for s in State.query.all()],
+        id='Event.states', coerce=int
     )
-    # city_id = SelectField(
-    #     'Cidade', choices=[],
-    #     id='Event.cities', coerce=int
-    # )
-    city = QuerySelectField(
-        'Cidade', id='Event.cities',
-        query_factory=lambda: (City.query.all()),
-        get_label=lambda a: str(a.name),
-        get_pk=lambda a: a.id
+    city_id = SelectField(
+        'Cidade', choices=[(c.id, c.name) for c in City.query.all()],
+        id='Event.cities', coerce=int
     )
     submit = SubmitField('Enviar')

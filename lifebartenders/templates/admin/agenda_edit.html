@@ -1,0 +1,66 @@
+{% extends "admin/base.html" %}
+{% block title_page %}Eventos{% endblock %}
+{% block title_section %}Editar Evento{% endblock %}
+{% block content %}
+    {% include "admin/_agenda_form.html" %}
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    // masks
+    $("#date").mask("00/00/0000 00:00");
+    var state_id = {{ agenda.city.state_id }};
+    var city_id = {{ agenda.city.id }};
+    // function to get cities by state_id
+    function update_cities(state_id){
+        $("select[name='city_id']").attr('disabled', 'disabled');
+        $.getJSON(
+            "/admin/_get_cities/"+state_id,
+            function(resp){
+                $("select[name='city_id']").empty();
+                selected = null;
+                resp.forEach(function(item){
+                    // marcar atual cidde, se o estado atual for selecionado
+                    if (item.id == city_id){
+                        selected = 'selected';
+                    }else{ selected = null; }
+                    $("select[name='city_id']").append(
+                        $('<option>').attr('value', item.id).attr('selected', selected).text(item.name)
+                    )
+                });
+                $("select[name='city_id']").removeAttr('disabled');
+            }
+        );
+    }
+
+    function select_state(state_id){
+        $("select[name='state'] option").each(function(){
+            if ($(this).val() == state_id){
+                $(this).attr('selected', 'selected');
+            }
+        });
+        update_cities($("select[name='state']").val());
+    }
+
+    function select_city(city_id){
+        $("select[name='city_id'] option").each(function(){
+            if($(this).val() == city_id){
+                $(this).attr('selected', 'selected');
+            }
+        })
+    }
+
+    // init
+    select_state( state_id );
+    select_city( city_id );
+
+    // on change trigger
+    $("select[name='city_id']").attr('disabled', 'disabled');
+    $("select[name='state']").change(function(){
+        update_cities($(this).val());
+    });
+});
+</script>
+{% endblock %}

@@ -5,7 +5,7 @@ from flask import (
 )
 from flask_user import login_required
 from lifebartenders import db
-from lifebartenders.models import Event, City
+from lifebartenders.models import Event, City, State
 from lifebartenders.forms import EventForm
 from lifebartenders.schemas import CitiesSchema
 
@@ -53,12 +53,10 @@ def agenda():
 @admin.route('/agenda/add', methods=['GET', 'POST'])
 @login_required
 def add_agenda():
-    form = EventForm(request.form)
-    print(form.data)
+    agenda = Event()
+    form = EventForm(request.form, obj=agenda)
     if request.method == 'POST':
-        agenda = Event()
         form.populate_obj(agenda)
-        print(agenda.__dict__)
         if form.validate():
             try:
                 db.session.add(agenda)
@@ -71,16 +69,41 @@ def add_agenda():
             print(form.errors)
 
     return render_template(
-        'admin/agenda_form.html',
+        'admin/agenda_add.html',
         form=form,
         title_action='Adicionar'
     )
 
 
-@admin.route('/agenda/edit/<id>')
+@admin.route('/agenda/edit/<int:event_id>', methods=['GET', 'POST'])
 @login_required
-def edit_agenda(id):
-    pass
+def edit_agenda(event_id):
+    agenda = Event.query.filter(Event.id == event_id).first()
+    form = EventForm(request.form, obj=agenda)
+    if request.method == 'POST' and form.validate():
+        form.populate_obj(agenda)
+        try:
+            db.session.add(agenda)
+            db.session.commit()
+        except Exception as e:
+            print('except: {}'.format(e))
+            db.session.rollback()
+        return redirect(url_for('admin.agenda'))
+
+    state = State.query.first_or_404(agenda.city.state_id)
+    cities = [(c.id, c.name) for c in City.query.filter(
+        State.id == City.state_id
+    ).filter(State.id == agenda.city.state_id).all()]
+    form.state.default = state.id
+    form.city_id.choices = cities
+    form.city_id.default = agenda.city.id
+    form.visible.checked = 'checked' if agenda.visible is True else ''
+
+    return render_template(
+        'admin/agenda_edit.html',
+        form=form,
+        agenda=agenda
+    )
 
 
 @admin.route('/agenda/delete/<id>')
