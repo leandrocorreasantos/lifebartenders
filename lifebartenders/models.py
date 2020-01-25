@@ -52,9 +52,6 @@ class Event(db.Model, BaseModel):
         ondelete='RESTRICT'
     ))
     city = db.relationship('City', backref='event')
-    # TODO: add function to get next event
-    # TODO:  add function to get all old events
-    # TODO: add function to get all next events
 
 
 class EventPhoto(db.Model, BaseModel):
