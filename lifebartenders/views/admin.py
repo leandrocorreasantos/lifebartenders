@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask import (
     Blueprint, render_template, jsonify, request, redirect, url_for,
-    make_response
+    make_response, flash
 )
 from flask_user import login_required
 from lifebartenders import db
@@ -55,23 +55,19 @@ def agenda():
 def add_agenda():
     agenda = Event()
     form = EventForm(request.form, obj=agenda)
-    if request.method == 'POST':
+    if request.method == 'POST' and form.validate():
         form.populate_obj(agenda)
-        if form.validate():
-            try:
-                db.session.add(agenda)
-                db.session.commit()
-            except Exception as e:
-                print('except: {}'.format(e))
-                db.session.rollback()
-            return redirect(url_for('admin.agenda'))
-        else:
-            print(form.errors)
+        try:
+            db.session.add(agenda)
+            db.session.commit()
+        except Exception as e:
+            print('except: {}'.format(e))
+            db.session.rollback()
+        return redirect(url_for('admin.agenda'))
 
     return render_template(
         'admin/agenda_add.html',
         form=form,
-        title_action='Adicionar'
     )
 
 
@@ -106,10 +102,20 @@ def edit_agenda(event_id):
     )
 
 
-@admin.route('/agenda/delete/<id>')
+@admin.route('/agenda/delete/<int:event_id>', methods=['POST', 'DELETE'])
 @login_required
-def delete_agenda(id):
-    pass
+def delete_agenda(event_id):
+    agenda = Event.query.get(event_id)
+    try:
+        db.session.delete(agenda)
+        db.session.commit()
+    except Exception as e:
+        print('Error while delete agenda: {}'.format(e))
+        flash('Erro ao excluir evento', 'error')
+        db.session.rollback()
+
+    flash('Evento {} excluído com sucesso!'.format(agenda.id), 'success')
+    return redirect(url_for('admin.artigos'))
 
 
 @admin.route('/eventos')

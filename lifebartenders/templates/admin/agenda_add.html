@@ -30,7 +30,6 @@ $(document).ready(function(){
     }
 
     // on change trigger
-    $("select[name='city_id']").attr('disabled', 'disabled');
     $("select[name='state']").change(function(){
         update_cities($(this).val());
     });
