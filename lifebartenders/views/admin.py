@@ -1,12 +1,16 @@
+import os
 from datetime import datetime
 from flask import (
     Blueprint, render_template, jsonify, request, redirect, url_for,
     make_response, flash
 )
+from werkzeug.utils import secure_filename
 from flask_user import login_required
 from lifebartenders import db
-from lifebartenders.models import Event, City, State
-from lifebartenders.forms import EventForm
+from lifebartenders.utils import valid_extension
+from lifebartenders.config import UPLOAD_FOLDER, UPLOAD_DEST, basedir
+from lifebartenders.models import Event, EventPhoto, City, State
+from lifebartenders.forms import EventForm, EventUploadForm
 from lifebartenders.schemas import CitiesSchema
 
 
@@ -63,6 +67,11 @@ def add_agenda():
         except Exception as e:
             print('except: {}'.format(e))
             db.session.rollback()
+
+        # create folder to upload images
+        event_folder = os.path.join(UPLOAD_FOLDER, '{}'.format(agenda.id))
+        os.makedirs(event_folder)
+
         return redirect(url_for('admin.agenda'))
 
     return render_template(
@@ -71,7 +80,7 @@ def add_agenda():
     )
 
 
-@admin.route('/agenda/edit/<int:event_id>', methods=['GET', 'POST'])
+@admin.route('/agenda/<int:event_id>/edit', methods=['GET', 'POST'])
 @login_required
 def edit_agenda(event_id):
     agenda = Event.query.filter(Event.id == event_id).first()
@@ -102,7 +111,7 @@ def edit_agenda(event_id):
     )
 
 
-@admin.route('/agenda/delete/<int:event_id>', methods=['POST', 'DELETE'])
+@admin.route('/agenda/<int:event_id>/delete', methods=['POST', 'DELETE'])
 @login_required
 def delete_agenda(event_id):
     agenda = Event.query.get(event_id)
@@ -121,4 +130,66 @@ def delete_agenda(event_id):
 @admin.route('/eventos')
 @login_required
 def eventos():
-    return render_template('admin/eventos.html')
+    eventos = Event.query.filter(Event.date <= datetime.now()).all()
+    return render_template(
+        'admin/evento.html',
+        eventos=eventos
+    )
+
+
+@admin.route('/eventos/<int:event_id>/upload', methods=['GET', 'POST'])
+@login_required
+def upload_evento(event_id):
+    evento = Event.query.get(event_id)
+    photo = EventPhoto()
+    form = EventUploadForm(request.form, obj=photo)
+    if request.method == 'POST' and form.validate():
+        event_folder = os.path.join(UPLOAD_FOLDER, '{}'.format(event_id))
+        if 'image' in request.files:
+            file = request.files['image']
+            if valid_extension(file.filename):
+                filename = secure_filename(file.filename)
+                try:
+                    filedest = '{}/{}/{}'.format(
+                        UPLOAD_DEST, event_id, filename
+                    )
+                    file.save(os.path.join(event_folder, filename))
+                except Exception as e:
+                    print('except upload: {}'.format(e))
+
+                photo.image = filedest
+                photo.event_id = event_id
+                try:
+                    db.session.add(photo)
+                    db.session.commit()
+                except Exception as e:
+                    print('Except save: {}'.format(e))
+                    db.session.rollback()
+
+    photos = EventPhoto.query.filter(EventPhoto.event_id == event_id).all()
+    return render_template(
+        'admin/evento_upload.html',
+        evento=evento,
+        form=form,
+        photos=photos
+    )
+
+
+@admin.route('/eventos/photo/delete', methods=['DELETE'])
+@login_required
+def delete_photo():
+    photo_id = request.form.get('id')
+    photo = EventPhoto.query.get(photo_id)
+    image_to_delete = os.path.join(basedir, 'static', photo.image)
+    try:
+        db.session.delete(photo)
+        db.session.commit()
+    except Exception as e:
+        print('Error while delete image: {}'.format(e))
+        db.session.rollback()
+        return jsonify({}, 204)
+
+    if os.path.isfile(image_to_delete):
+        os.unlink(image_to_delete)
+
+    return jsonify({}), 200

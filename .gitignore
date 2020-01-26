@@ -131,3 +131,6 @@ dmypy.json
 # vim
 *.swa
 *.swp
+
+# image upload
+static/img/event_photos/*

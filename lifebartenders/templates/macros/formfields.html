@@ -27,10 +27,12 @@
 </div>
 {%- endmacro %}
 
-{% macro render_checkbox(field, span_class=None) -%}
+{% macro render_checkbox(field) -%}
 <div class="custom-control custom-checkbox custom-control-inline">
+    <label>
         {{ field(**kwargs) }}
         {{ field.label(class='custom-control-label') }}
+    </label>
     <ul class="errors">
         {% for error in field.errors %}
         <li>{{ error|e }}</li>

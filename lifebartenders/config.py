@@ -27,3 +27,8 @@ MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
 MAIL_DEBUG = False
+
+# image upload
+UPLOAD_FOLDER = os.path.join(basedir, 'static/img/event_photos')
+UPLOAD_DEST = 'img/event_photos'
+ALLOWED_EXTENSIONS = {'jpg', 'png', 'jpeg'}
