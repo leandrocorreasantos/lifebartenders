@@ -15,6 +15,7 @@ from lifebartenders.schemas import CitiesSchema
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
+OFFSET = 3
 
 
 @admin.route('/_get_cities/<state_id>')
@@ -49,9 +50,11 @@ def dashboard():
 @admin.route('/agenda')
 @login_required
 def agenda():
+    page = request.args.get('page', 1, type=int)
+
     agendas = Event.query.filter(
         Event.date > datetime.now()
-    ).all()
+    ).paginate(page, OFFSET, False)
     return render_template(
         'admin/agenda.html',
         agendas=agendas
@@ -134,7 +137,12 @@ def delete_agenda(event_id):
 @admin.route('/eventos')
 @login_required
 def eventos():
-    eventos = Event.query.filter(Event.date <= datetime.now()).all()
+    page = request.args.get('page', 1, type=int)
+
+    eventos = Event.query.filter(
+        Event.date <= datetime.now()
+    ).paginate(page, OFFSET, False)
+
     return render_template(
         'admin/evento.html',
         eventos=eventos

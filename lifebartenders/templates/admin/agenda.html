@@ -1,4 +1,5 @@
 {% extends 'admin/base.html' %}
+{% from 'macros/pagination.html' import render_pagination %}
 {% block title_page %}Agenda{% endblock %}
 {% block title_section %}Agenda{% endblock %}
 {% block toolbar_buttons %}
@@ -19,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-				{% for agenda in agendas %}
+				{% for agenda in agendas.items %}
           <tr>
 						<td>{{ agenda.id }}</td>
 						<td>{{ agenda.title }}</td>
@@ -41,5 +42,8 @@
 				{% endfor %}
       </tbody>
     </table>
+  </div>
+  <div clas="row">
+    {{ render_pagination(agendas, 'admin.agenda') }}
   </div>
 {% endblock %}
