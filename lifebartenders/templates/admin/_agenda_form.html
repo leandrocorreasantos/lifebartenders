@@ -9,7 +9,7 @@
         {{ render_textarea(form.description, rows=3, cols=50, class='form-control') }}
         {{ render_field(form.date, format="%d/%m/%Y %H:%M", class='form-control') }}
         {{ render_field(form.place, class='form-control') }}
-        {{ render_checkbox(form.visible, class='form-check-input', span_class="form-check-sign") }}
+        {{ render_checkbox(form.visible, class='custom-control-input') }}
         {{ render_field(form.state, class='form-control') }}
         {{ render_field(form.city_id, class='form-control') }}
     </div>

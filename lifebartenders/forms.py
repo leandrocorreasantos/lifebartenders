@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
 from wtforms import (
     DateTimeField, BooleanField, SelectField, TextAreaField,
-    StringField, SubmitField, validators
+    StringField, SubmitField, HiddenField, FileField, validators
 )
-from lifebartenders.models import Event, State, City
+from lifebartenders.models import Event, EventPhoto, State, City
 
 
 class EventForm(FlaskForm):
@@ -24,3 +24,12 @@ class EventForm(FlaskForm):
         id='Event.cities', coerce=int
     )
     submit = SubmitField('Enviar')
+
+
+class EventUploadForm(FlaskForm):
+    class Meta:
+        model = EventPhoto
+
+    event_id = HiddenField()
+    image = FileField('Imagem')
+    submit = SubmitField('Upload')
