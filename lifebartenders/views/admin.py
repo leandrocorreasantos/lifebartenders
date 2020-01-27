@@ -15,7 +15,7 @@ from lifebartenders.schemas import CitiesSchema
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
-OFFSET = 3
+OFFSET = os.environ.get('OFFSET_PAGINATOR', 20)
 
 
 @admin.route('/_get_cities/<state_id>')
