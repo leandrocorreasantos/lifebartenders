@@ -118,9 +118,10 @@ def edit_agenda(event_id):
     )
 
 
-@admin.route('/agenda/<int:event_id>/delete', methods=['POST', 'DELETE'])
+@admin.route('/agenda/delete', methods=['DELETE'])
 @login_required
-def delete_agenda(event_id):
+def delete_agenda():
+    event_id = request.form.get('event_id')
     agenda = Event.query.get(event_id)
     try:
         db.session.delete(agenda)
@@ -131,7 +132,7 @@ def delete_agenda(event_id):
         db.session.rollback()
 
     flash('Evento {} excluído com sucesso!'.format(agenda.id), 'success')
-    return redirect(url_for('admin.artigos'))
+    return jsonify({}), 200
 
 
 @admin.route('/eventos')

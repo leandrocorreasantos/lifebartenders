@@ -3,54 +3,63 @@
 {% block title_page %}Eventos{% endblock %}
 {% block title_section %}Eventos{% endblock %}
 {% block toolbar_buttons %}
-  <div class="btn-group mr-2">
-    <a href="{{ url_for('admin.add_agenda') }}" role="button" class="btn btn-primary btn-sm">Novo Evento</a>
-  </div>
+<div class="btn-group mr-2">
+  <a href="{{ url_for('admin.add_agenda') }}" role="button" class="btn btn-primary btn-sm">Novo Evento</a>
+</div>
 {% endblock %}
 {% block content %}
 <div class="table-responsive">
-    <table class="table table-striped table-sm">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Evento</th>
-          <th>Local</th>
-          <th>Data</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for evento in eventos.items %}
-          <tr>
-            <td>{{ evento.id }}</td>
-            <td>{{ evento.title }}</td>
-            <td>{{ evento.place }}</td>
-            <td>{{ evento.date.strftime("%d/%m/%Y %H:%M") }}</td>
-            <td class="list-inline">
-              <a href="{{url_for('admin.upload_evento', event_id=evento.id)}}"
-                role="button" class="btn btn-dark btn-sm list-inline-item"
-                title="Upload" alt="Upload">
-                <span class="fa fa-image"></span>
-              </a>
-              <a href="{{url_for('admin.edit_agenda', event_id=evento.id)}}"
-                role="button" class="btn btn-dark btn-sm list-inline-item"
-                title="Editar" alt="Editar">
-                <span class="fa fa-edit"></span>
-              </a>
-              <form id="delete_form" method="POST" class="list-inline-item">
-                <button type="submit" class="btn btn-danger btn-sm"
-                action="{{ url_for('admin.delete_agenda', event_id=evento.id) }}"
-                title="Excluir" alt="Excluir">
-                  <span class="fa fa-trash"></span>
-                </button>
-              </form>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  <div clas="row">
-    {{ render_pagination(eventos, 'admin.evento') }}
-  </div>
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Evento</th>
+        <th>Local</th>
+        <th>Data</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for evento in eventos.items %}
+      <tr class='event_tr' id="{{ evento.id }}">
+        <td>{{ evento.id }}</td>
+        <td>{{ evento.title }}</td>
+        <td>{{ evento.place }}</td>
+        <td>{{ evento.date.strftime("%d/%m/%Y %H:%M") }}</td>
+        <td class="list-inline">
+          <a href="{{url_for('admin.upload_evento', event_id=evento.id)}}"
+          role="button" class="btn btn-dark btn-sm list-inline-item"
+          title="Upload" alt="Upload">
+          <span class="fa fa-image"></span>
+        </a>
+        <a href="{{url_for('admin.edit_agenda', event_id=evento.id)}}"
+        role="button" class="btn btn-dark btn-sm list-inline-item"
+        title="Editar" alt="Editar">
+        <span class="fa fa-edit"></span>
+      </a>
+      <button type="submit" class="btn btn-danger btn-sm delete_event" id="{{ evento.id }}">
+        <span class="fa fa-trash"></span>
+      </button>
+    </td>
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+</div>
+<div clas="row">
+  {{ render_pagination(eventos, 'admin.evento') }}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/delete_event.js') }}"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('button.delete_event').click(function(){
+      var event_id = $(this).attr('id');
+  var element = "tr.event_tr#"+event_id;
+  delete_event(event_id, element);
+});
+});
+</script>
 {% endblock %}

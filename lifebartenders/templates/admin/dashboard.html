@@ -2,84 +2,97 @@
 {% block title_page %}Painel{% endblock %}
 {% block title_section %}Painel{% endblock %}
 {% block content %}
-         <h2>Próximos Eventos</h2>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Evento</th>
-                  <th>Local</th>
-                  <th>Data</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for agenda in agendas %}
-                  <tr>
-                    <td>{{ agenda.id }}</td>
-                    <td>{{ agenda.title }}</td>
-                    <td>{{ agenda.place }}</td>
-                    <td>{{ agenda.date.strftime("%d/%m/%Y %H:%M") }}</td>
-                    <td class="list-inline">
-                      <a href="{{url_for('admin.edit_agenda', event_id=agenda.id)}}"
-                        role="button" class="btn btn-dark btn-sm list-inline-item">
-                        <span class="fa fa-edit"></span>
-                      </a>
-                      <form id="delete_form" method="POST" class="list-inline-item">
-                        <button type="submit" class="btn btn-danger btn-sm"
-                        action="{{ url_for('admin.delete_agenda', event_id=agenda.id) }}">
-                          <span class="fa fa-trash"></span>
-                        </button>
-                      </form>
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
+<h2>Próximos Eventos</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Evento</th>
+        <th>Local</th>
+        <th>Data</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for agenda in agendas %}
+      <tr class="agenda_tr" id="{{ agenda.id }}">
+        <td>{{ agenda.id }}</td>
+        <td>{{ agenda.title }}</td>
+        <td>{{ agenda.place }}</td>
+        <td>{{ agenda.date.strftime("%d/%m/%Y %H:%M") }}</td>
+        <td class="list-inline">
+          <a href="{{url_for('admin.edit_agenda', event_id=agenda.id)}}"
+          role="button" class="btn btn-dark btn-sm list-inline-item">
+          <span class="fa fa-edit"></span>
+        </a>
+        <button type="submit" class="btn btn-danger btn-sm delete_agenda" id="{{ agenda.id }}">
+          <span class="fa fa-trash"></span>
+        </button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
 
-		<h2>Últimos Eventos</h2>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Evento</th>
-                  <th>Local</th>
-                  <th>Data</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for evento in eventos %}
-                  <tr>
-                    <td>{{ evento.id }}</td>
-                    <td>{{ evento.title }}</td>
-                    <td>{{ evento.place }}</td>
-                    <td>{{ evento.date.strftime("%d/%m/%Y %H:%M") }}</td>
-                    <td class="list-inline">
-                      <a href="{{url_for('admin.upload_evento', event_id=evento.id)}}"
-                        role="button" class="btn btn-dark btn-sm list-inline-item"
-                        title="Upload" alt="Upload">
-                        <span class="fa fa-image"></span>
-                      </a>
-                      <a href="{{url_for('admin.edit_agenda', event_id=evento.id)}}"
-                        role="button" class="btn btn-dark btn-sm list-inline-item"
-                        title="Editar" alt="Editar">
-                        <span class="fa fa-edit"></span>
-                      </a>
-                      <form id="delete_form" method="POST" class="list-inline-item">
-                        <button type="submit" class="btn btn-danger btn-sm"
-                        action="{{ url_for('admin.delete_agenda', event_id=evento.id) }}"
-                        title="Excluir" alt="Excluir">
-                          <span class="fa fa-trash"></span>
-                        </button>
-                      </form>
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
+<h2>Últimos Eventos</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Evento</th>
+        <th>Local</th>
+        <th>Data</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for evento in eventos %}
+      <tr class="evento_tr" id="{{ evento.id }}">
+        <td>{{ evento.id }}</td>
+        <td>{{ evento.title }}</td>
+        <td>{{ evento.place }}</td>
+        <td>{{ evento.date.strftime("%d/%m/%Y %H:%M") }}</td>
+        <td class="list-inline">
+          <a href="{{url_for('admin.upload_evento', event_id=evento.id)}}"
+          role="button" class="btn btn-dark btn-sm list-inline-item"
+          title="Upload" alt="Upload">
+          <span class="fa fa-image"></span>
+        </a>
+        <a href="{{url_for('admin.edit_agenda', event_id=evento.id)}}"
+        role="button" class="btn btn-dark btn-sm list-inline-item"
+        title="Editar" alt="Editar">
+        <span class="fa fa-edit"></span>
+      </a>
+      <button type="submit" class="btn btn-danger btn-sm delete_evento" id="{{ evento.id }}">
+        <span class="fa fa-trash"></span>
+      </button>
+    </td>
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}
+
+
+{% block javascripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/delete_event.js') }}"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('button.delete_evento').click(function(){
+      var event_id = $(this).attr('id');
+      var element = "tr.evento_tr#"+event_id;
+      delete_event(event_id, element);
+    });
+
+    $('button.delete_agenda').click(function(){
+      var event_id = $(this).attr('id');
+      var element = "tr.agenda_tr#"+event_id;
+      delete_event(event_id, element);
+    });
+  });
+</script>
 {% endblock %}
