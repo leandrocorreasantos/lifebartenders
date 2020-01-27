@@ -33,8 +33,12 @@ def get_cities(state_id):
 @admin.route('/dashboard')
 @login_required
 def dashboard():
-    agendas = Event.query.filter(Event.date > datetime.now()).all()
-    eventos = Event.query.filter(Event.date <= datetime.now()).all()
+    agendas = Event.query.filter(
+        Event.date > datetime.now()
+    ).paginate(1, 20, False).items
+    eventos = Event.query.filter(
+        Event.date <= datetime.now()
+    ).paginate(1, 20, False).items
     return render_template(
         'admin/dashboard.html',
         agendas=agendas,

@@ -8,27 +8,33 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th>Evento</th>
+                  <th>Local</th>
+                  <th>Data</th>
+                  <th>Ações</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>
-					<button type="button" class="btn btn-default btn-sm">
-						<span class="fa fa-edit"></span>
-					</button>
-					<button type="button" class="btn btn-default btn-sm">
-						<span class="fa fa-trash"></span>
-					</button>
-				  </td>
-                </tr>
+                {% for agenda in agendas %}
+                  <tr>
+                    <td>{{ agenda.id }}</td>
+                    <td>{{ agenda.title }}</td>
+                    <td>{{ agenda.place }}</td>
+                    <td>{{ agenda.date.strftime("%d/%m/%Y %H:%M") }}</td>
+                    <td class="list-inline">
+                      <a href="{{url_for('admin.edit_agenda', event_id=agenda.id)}}"
+                        role="button" class="btn btn-dark btn-sm list-inline-item">
+                        <span class="fa fa-edit"></span>
+                      </a>
+                      <form id="delete_form" method="POST" class="list-inline-item">
+                        <button type="submit" class="btn btn-danger btn-sm"
+                        action="{{ url_for('admin.delete_agenda', event_id=agenda.id) }}">
+                          <span class="fa fa-trash"></span>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>
@@ -39,30 +45,40 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th>Evento</th>
+                  <th>Local</th>
+                  <th>Data</th>
+                  <th>Ações</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>
-				  	<button type="button" class="btn btn-default btn-sm">
-						<span class="fa fa-image"></span>
-					</button>
-					<button type="button" class="btn btn-default btn-sm">
-						<span class="fa fa-edit"></span>
-					</button>
-					<button type="button" class="btn btn-default btn-sm">
-						<span class="fa fa-trash"></span>
-					</button>
-				  </td>
-                </tr>
+                {% for evento in eventos %}
+                  <tr>
+                    <td>{{ evento.id }}</td>
+                    <td>{{ evento.title }}</td>
+                    <td>{{ evento.place }}</td>
+                    <td>{{ evento.date.strftime("%d/%m/%Y %H:%M") }}</td>
+                    <td class="list-inline">
+                      <a href="{{url_for('admin.upload_evento', event_id=evento.id)}}"
+                        role="button" class="btn btn-dark btn-sm list-inline-item"
+                        title="Upload" alt="Upload">
+                        <span class="fa fa-image"></span>
+                      </a>
+                      <a href="{{url_for('admin.edit_agenda', event_id=evento.id)}}"
+                        role="button" class="btn btn-dark btn-sm list-inline-item"
+                        title="Editar" alt="Editar">
+                        <span class="fa fa-edit"></span>
+                      </a>
+                      <form id="delete_form" method="POST" class="list-inline-item">
+                        <button type="submit" class="btn btn-danger btn-sm"
+                        action="{{ url_for('admin.delete_agenda', event_id=evento.id) }}"
+                        title="Excluir" alt="Excluir">
+                          <span class="fa fa-trash"></span>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>
