@@ -15,6 +15,7 @@ from lifebartenders.schemas import CitiesSchema
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
+OFFSET = os.environ.get('OFFSET_PAGINATOR', 20)
 
 
 @admin.route('/_get_cities/<state_id>')
@@ -33,8 +34,12 @@ def get_cities(state_id):
 @admin.route('/dashboard')
 @login_required
 def dashboard():
-    agendas = Event.query.filter(Event.date > datetime.now()).all()
-    eventos = Event.query.filter(Event.date <= datetime.now()).all()
+    agendas = Event.query.filter(
+        Event.date > datetime.now()
+    ).paginate(1, 20, False).items
+    eventos = Event.query.filter(
+        Event.date <= datetime.now()
+    ).paginate(1, 20, False).items
     return render_template(
         'admin/dashboard.html',
         agendas=agendas,
@@ -45,9 +50,11 @@ def dashboard():
 @admin.route('/agenda')
 @login_required
 def agenda():
+    page = request.args.get('page', 1, type=int)
+
     agendas = Event.query.filter(
         Event.date > datetime.now()
-    ).all()
+    ).paginate(page, OFFSET, False)
     return render_template(
         'admin/agenda.html',
         agendas=agendas
@@ -111,9 +118,10 @@ def edit_agenda(event_id):
     )
 
 
-@admin.route('/agenda/<int:event_id>/delete', methods=['POST', 'DELETE'])
+@admin.route('/agenda/delete', methods=['DELETE'])
 @login_required
-def delete_agenda(event_id):
+def delete_agenda():
+    event_id = request.form.get('event_id')
     agenda = Event.query.get(event_id)
     try:
         db.session.delete(agenda)
@@ -124,13 +132,18 @@ def delete_agenda(event_id):
         db.session.rollback()
 
     flash('Evento {} excluído com sucesso!'.format(agenda.id), 'success')
-    return redirect(url_for('admin.artigos'))
+    return jsonify({}), 200
 
 
 @admin.route('/eventos')
 @login_required
 def eventos():
-    eventos = Event.query.filter(Event.date <= datetime.now()).all()
+    page = request.args.get('page', 1, type=int)
+
+    eventos = Event.query.filter(
+        Event.date <= datetime.now()
+    ).paginate(page, OFFSET, False)
+
     return render_template(
         'admin/evento.html',
         eventos=eventos
