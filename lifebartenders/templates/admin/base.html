@@ -12,7 +12,7 @@
 
 	<body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Life Bartenders</a>
+		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url_for('admin.dashboard') }}">Life Bartenders</a>
 	  {% block search_field %}{% endblock %}
 	  <!--<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
       <ul class="navbar-nav px-3">
@@ -21,27 +21,29 @@
         </li>
       </ul>
     </nav>
-
+	{# @TODO alterar css pra fazer o nav 'sair de cima' do menu #}
     <div class="container-fluid">
+
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-				  <a class="nav-link active" href="{{ url_for('admin.dashboard') }}">
+				        <a class="nav-link" href="{{ url_for('admin.dashboard') }}">
                   <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
+                    <span class="sr-only">(current)</span>
+                    Dashboard
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('admin.agenda') }}">
-                  <span data-feather="file"></span>
+                  <span data-feather="calendar"></span>
                   Agenda
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('admin.eventos') }}">
-                  <span data-feather="shopping-cart"></span>
+                  <span data-feather="camera"></span>
                   Eventos
                 </a>
 			  </li>
@@ -50,20 +52,16 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            {% for category, message in get_flashed_messages(with_categories=True) %}
+              <div class="alert alert-{{ category }}">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <p class="lead">{{ message }}</p>
+              </div>
+            {% endfor %}
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
             <h1 class="h2">{% block title_section %}Dashboard{% endblock %}</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
 				    {% block toolbar_buttons %}{% endblock %}
-            <!--
-              <div class="btn-group mr-2">
-                <button class="btn btn-sm btn-outline-secondary">Share</button>
-                <button class="btn btn-sm btn-outline-secondary">Export</button>
-              </div>
-              <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
-			        </button>
-            -->
             </div>
           </div>
             {% block content %}{% endblock %}
@@ -86,10 +84,17 @@
     <!-- Icons -->
 	<script src="{{ url_for('static', filename='admin/js/feather.min.js') }}"></script>
     <script>
-      feather.replace()
+      feather.replace();
     </script>
     {% block javascripts %}
     {% endblock %}
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".alert").fadeTo(2000, 500).slideUp(500, function() {
+          $(".alert").slideUp(500);
+        });
+      })
+    </script>
   </body>
 </html>
 
