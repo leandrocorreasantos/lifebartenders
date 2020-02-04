@@ -79,6 +79,7 @@ def add_agenda():
         event_folder = os.path.join(UPLOAD_FOLDER, '{}'.format(agenda.id))
         os.makedirs(event_folder)
 
+        flash('Evento cadastrado com sucesso!', 'success')
         return redirect(url_for('admin.agenda'))
 
     return render_template(
@@ -100,6 +101,8 @@ def edit_agenda(event_id):
         except Exception as e:
             print('except: {}'.format(e))
             db.session.rollback()
+
+        flash('Evento {} editado com sucesso!'.format(event_id), 'success')
         return redirect(url_for('admin.agenda'))
 
     state = State.query.first_or_404(agenda.city.state_id)
@@ -131,7 +134,6 @@ def delete_agenda():
         flash('Erro ao excluir evento', 'error')
         db.session.rollback()
 
-    flash('Evento {} excluído com sucesso!'.format(agenda.id), 'success')
     return jsonify({}), 200
 
 
