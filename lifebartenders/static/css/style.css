@@ -32,10 +32,10 @@ Version: 2.0
   -- Blog Section
   -- What We Offers Section
   -- Booking Section
-  -- Contact Us Section 
+  -- Contact Us Section
   -- Jockey Section
   -- Error Section
-  -- Footer Section 
+  -- Footer Section
   -- Copyright Section
   -- Footer Style 2
 - Single Post Page
@@ -43,7 +43,7 @@ Version: 2.0
 */
 
 
-/* 
+/*
 ----------------------------------
 - Preloader
 ----------------------------------
@@ -102,8 +102,8 @@ Version: 2.0
     top: 0px;
     left: 0px;
     border: 4px solid transparent;
-    border-top-color: #d32d0b;
-    border-bottom-color: #d32d0b;
+    border-top-color: #751489;
+    border-bottom-color: #751489;
     animation: spinny 2s linear infinite;
 }
 @keyframes spinny {
@@ -118,7 +118,7 @@ Version: 2.0
     }
 }
 
-/* 
+/*
 ----------------------------------
 - Navbar Section
 ----------------------------------
@@ -156,7 +156,7 @@ Version: 2.0
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0;
-    color: #d32d0b;
+    color: #751489;
     text-transform: capitalize;
 }
 .online span,
@@ -266,7 +266,7 @@ Version: 2.0
 .navbar-default .navbar-nav >.open > a:focus,
 .navbar-default .navbar-nav >.open:hover > a {
     color: #fff!important;
-    background-color: #d32d0b;
+    background-color: #751489;
 }
 .dropdown-menu {
     display: block;
@@ -333,7 +333,7 @@ Version: 2.0
 .dropdown-menu > .active > a:focus,
 .dropdown-menu > .active:hover > a,
 .sub-menu li:hover a {
-    background-color: #d32d0b;
+    background-color: #751489;
     color: #fff!important;
 }
 .sub-menu {
@@ -426,7 +426,7 @@ Version: 2.0
     background-color: rgba(19, 19, 19, .75);
 }
 .mega-dropdown-menu li:hover {
-    background-color: #d32d0b;
+    background-color: #751489;
 }
 .mega-dropdown-menu li:first-child {
     background-color: transparent;
@@ -472,7 +472,7 @@ Version: 2.0
 .navbar-default .navbar-toggle .icon-bar {
     width: 35px;
     margin-bottom: 6px;
-    background-color: #d32d0b;
+    background-color: #751489;
     -webkit-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
@@ -510,10 +510,10 @@ Version: 2.0
     background-color: transparent;
 }
 
-/* 
+/*
 ----------------------------------
 -- Menu Style 2
----------------------------------- 
+----------------------------------
 */
 
 .header-top .navbar-brand {
@@ -530,13 +530,13 @@ Version: 2.0
     background-color: #403f3f;
 }
 .nav-area-2 .sub-menu li:hover a {
-    background-color: #d32d0b;
+    background-color: #751489;
 }
 
-/* 
+/*
 ----------------------------------
 -- Menu Style 3
----------------------------------- 
+----------------------------------
 */
 
 .nav-area-3,
@@ -545,7 +545,7 @@ Version: 2.0
     background-color: #000;
 }
 .nav-area-3 .sub-menu li:hover a {
-    background-color: #d32d0b;
+    background-color: #751489;
 }
 .nav-area-3 .header-top {
     background-color: #352b2b;
@@ -562,10 +562,10 @@ Version: 2.0
     padding: 22.2px 0px;
 }
 
-/* 
+/*
 ----------------------------------
 -- Menu Style 4
----------------------------------- 
+----------------------------------
 */
 
 .nav-area-4,
@@ -586,7 +586,7 @@ Version: 2.0
     height: 2px;
     bottom: -10px;
     left: 0;
-    background-color: #d32d0b;
+    background-color: #751489;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -ms-transition: all .3s ease-in-out;
@@ -618,7 +618,7 @@ Version: 2.0
     height: 0%;
     top: 0;
     left: 0;
-    background-color: #d32d0b;
+    background-color: #751489;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -ms-transition: all .3s ease-in-out;
@@ -656,10 +656,10 @@ Version: 2.0
 
 
 
-/* 
+/*
 ----------------------------------
 -- Menu Style 5
----------------------------------- 
+----------------------------------
 */
 
 .nav-area-5 {}
@@ -686,10 +686,10 @@ Version: 2.0
 
 
 
-/* 
+/*
 ----------------------------------
 -- Menu Style 6
----------------------------------- 
+----------------------------------
 */
 
 .nav-area-6,
@@ -698,24 +698,24 @@ Version: 2.0
     background-color: #4c4c4c;
 }
 .nav-area-6 .sub-menu li:hover a {
-    background-color: #d32d0b;
+    background-color: #751489;
 }
 .nav-area-6.navbar-default .main-menu nav > ul > li.active > a{
     background-color: transparent!important;
-    color: #d32d0b!important;
+    color: #751489!important;
 }
 .nav-area-6.navbar-default .main-menu nav > ul > li > a {
     background-color: transparent!important;
 }
 
 .nav-area-6.navbar-default .main-menu nav > ul > li:hover > a {
-    color: #d32d0b!important;
+    color: #751489!important;
 }
 
-/* 
+/*
 ----------------------------------
 -- Menu Style 7
----------------------------------- 
+----------------------------------
 */
 
 .nav-area-7,
@@ -737,7 +737,7 @@ Version: 2.0
     height: 2px;
     bottom: -6px;
     left: -7px;
-    background-color: #d32d0b;
+    background-color: #751489;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -ms-transition: all .3s ease-in-out;
@@ -752,7 +752,7 @@ Version: 2.0
     height: 2px;
     top: -6px;
     right: -7px;
-    background-color: #d32d0b;
+    background-color: #751489;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -ms-transition: all .3s ease-in-out;
@@ -784,7 +784,7 @@ Version: 2.0
     height: 0%;
     top: 0;
     left: 0;
-    background-color: #d32d0b;
+    background-color: #751489;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -ms-transition: all .3s ease-in-out;
@@ -824,7 +824,7 @@ Version: 2.0
 */
 
 
-/* 
+/*
 ----------------------------------
 -- Hero Section
 ----------------------------------
@@ -1027,7 +1027,7 @@ Version: 2.0
 /*
 ----------------------------
 -- About Section
----------------------------- 
+----------------------------
 */
 
 .about-area {}
@@ -1086,8 +1086,8 @@ Version: 2.0
 }
 .play-btn:hover,
 .play-btn:hover a {
-    color: #d32d0b;
-    border-color: #d32d0b;
+    color: #751489;
+    border-color: #751489;
 }
 .modal-content {
     border-radius: 0px;
@@ -1103,7 +1103,7 @@ a.close-me,
     border-radius: 50%;
     top: -20px;
     right: -20px;
-    background: #d32d0b;
+    background: #751489;
     z-index: 1;
     opacity: 1;
     color: #fff!important;
@@ -1177,7 +1177,7 @@ a.close-me,
 /*
 --------------------------------
 -- Event Section
--------------------------------- 
+--------------------------------
 */
 
 .event-area {}
@@ -1426,7 +1426,7 @@ a.close-me,
 /*
 ----------------------------------
 --- Default Gallery Section
----------------------------------- 
+----------------------------------
 */
 
 .gallery-area {}
@@ -1475,8 +1475,8 @@ a.close-me,
     transition: all .3s ease-in-out;
 }
 .gallery-item a:hover {
-    border-color: #d32d0b;
-    color: #d32d0b;
+    border-color: #751489;
+    color: #751489;
 }
 .gallery-item:hover img {
     -webkit-transform: scale(1.2);
@@ -1497,7 +1497,7 @@ a.close-me,
 /*
 ----------------------------------
 --- Main Gallery Section
----------------------------------- 
+----------------------------------
 */
 
 .main-gallery-area {}
@@ -1576,8 +1576,8 @@ a.close-me,
 }
 .play-btn2:hover,
 .play-btn2:hover a {
-    color: #d32d0b;
-    border-color: #d32d0b;
+    color: #751489;
+    border-color: #751489;
 }
 .video-tab:hover .caption,
 .video-tab.active .caption {
@@ -1602,7 +1602,7 @@ a.close-me,
 /*
 -------------------------------
 -- Dj's Profile Section
-------------------------------- 
+-------------------------------
 */
 
 .dj-profile-area {}
@@ -1667,7 +1667,7 @@ a.close-me,
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background-color: #d32d0b;
+    background-color: #751489;
     text-align: center;
     font-size: 18px;
     line-height: 36px;
@@ -1686,7 +1686,7 @@ a.close-me,
     transition: all .7s ease-in-out;
 }
 .profile-link li:hover a {
-    color: #d32d0b;
+    color: #751489;
     background-color: #fff;
 }
 .profile-tab {
@@ -1831,7 +1831,7 @@ a.close-me,
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0;
-    color: #d32d0b;
+    color: #751489;
     text-transform: uppercase;
     margin: 28px 0px 10px;
 }
@@ -1849,7 +1849,7 @@ a.close-me,
 /*
 -------------------------------
 -- Blog Section
-------------------------------- 
+-------------------------------
 */
 
 .blog-area {}
@@ -1938,7 +1938,7 @@ a.close-me,
 }
 .link-btn:hover {
     background-color: transparent;
-    color: #d32d0b!important;
+    color: #751489!important;
 }
 .link-btn2 {
     width: 35px;
@@ -2200,10 +2200,10 @@ a.close-me,
     transition: all .3s ease-in-out;
 }
 .tag-cloud li:hover {
-    border-color: #d32d0b;
+    border-color: #751489;
 }
 .tag-cloud li:hover a {
-    color: #d32d0b;
+    color: #751489;
 }
 
 /*
@@ -2253,7 +2253,7 @@ a.close-me,
     height: 20px;
     top: 37%;
     left: 26px;
-    background-color: #d32d0b;
+    background-color: #751489;
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
@@ -2328,7 +2328,7 @@ a.close-me,
 
 /*
 ---------------------------------
--- Contact Us Section 
+-- Contact Us Section
 ---------------------------------
  */
 
@@ -2407,7 +2407,7 @@ a.close-me,
 /*
 --------------------------------
 -- Jockey Section
--------------------------------- 
+--------------------------------
 */
 
 .jockey-area {}
@@ -2446,7 +2446,7 @@ a.close-me,
 /*
 -----------------------------
 -- Error Section
------------------------------ 
+-----------------------------
 */
 
 .error-area {
@@ -2488,7 +2488,7 @@ a.close-me,
 
 /*
 -----------------------------
--- Footer Section 
+-- Footer Section
 -----------------------------
  */
 
@@ -2534,7 +2534,7 @@ a.close-me,
     border: 1px solid #f7f7f7;
     font-size: 20px;
     line-height: 35px;
-    color: #d32d0b;
+    color: #751489;
     text-align: center;
 }
 .address-list p {
@@ -2604,7 +2604,7 @@ a.close-me,
     border-radius: 50%;
     border: 1px solid #f7f7f7;
     font-size: 18px;
-    color: #d32d0b;
+    color: #751489;
     line-height: 35px;
     text-align: center;
 }
@@ -2624,7 +2624,7 @@ a.close-me,
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0;
-    color: #d32d0b;
+    color: #751489;
     margin-bottom: 20px;
 }
 .footer-form {}
@@ -2655,7 +2655,7 @@ a.close-me,
 /*
 -------------------------------
 -- Copyright Section
-------------------------------- 
+-------------------------------
 */
 
 .copyright-area {
@@ -2701,18 +2701,18 @@ a.close-me,
     transition: all .3s ease-in-out;
 }
 .footer-social-link a:hover {
-    background-color: #d32d0b;
-    border-color: #d32d0b;
+    background-color: #751489;
+    border-color: #751489;
 }
 
 /*
 ----------------------------------
 -- Footer Style 2
----------------------------------- 
+----------------------------------
 */
 
 .call-to-action {
-    background: #d32d0b;
+    background: #751489;
     padding: 45px;
     margin-bottom: 70px;
 }

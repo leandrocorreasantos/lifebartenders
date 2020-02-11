@@ -17,12 +17,12 @@
 // about Section Slider
 // jockey Section Slider
 // Gallery Masonry Grid
-// prettyPhoto js   
+// prettyPhoto js
 // Profile Item Tab Slider
 // Video Item Tab Slider
 //background grid main slider
 //scrollReveal js Init
-// Ajax Contact Form  
+// Ajax Contact Form
  ===========================================================
  ===========================================================
  */
@@ -49,7 +49,7 @@ $(window).on('load', function() {
         meanScreenWidth: "991",
         meanMenuContainer: ".mobile-menu-area .mobile-menu",
     });
-    
+
     // Bootstrap Essentials
     $(".embed-responsive iframe").addClass("embed-responsive-item");
     $(".carousel-inner .item:first-child").addClass("active");
@@ -90,10 +90,10 @@ $(window).on('load', function() {
     });
 
     // On click hide collapse menu
-	
+
 	var navbarCollapse = $('.navbar-collapse');
 	var navbarToggle = $('.navbar-toggle');
-	
+
     $(".navbar-nav li a").on('click', function(event) {
         navbarCollapse.removeClass("collapse in").addClass("collapse").removeClass('open');
         navbarToggle.removeClass('open');
@@ -172,7 +172,7 @@ $(window).on('load', function() {
         });
     });
 
-    // Vedio PopUp 
+    // Vedio PopUp
     $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
         disableOn: 700,
         type: 'iframe',
@@ -206,7 +206,7 @@ $(window).on('load', function() {
             navigation: true,
             navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
             nav: true,
-            items: 5,
+            items: 3,
             addClassActive: true,
             dots: false,
             autoplay: false,
@@ -298,7 +298,7 @@ $(window).on('load', function() {
         rows: 2,
         columns: 6,
         maxStep: 2,
-        interval: 2000, // manage interval for grid image rotation 
+        interval: 2000, // manage interval for grid image rotation
         w1024: {
             columns: 3
         },
@@ -313,7 +313,7 @@ $(window).on('load', function() {
     sr.reveal('.foo');
     sr.reveal('.bar');
 
-    // Ajax Contact Form  
+    // Ajax Contact Form
 
     $('.cf-msg').hide();
     $('form#cf button#submit').on('click', function() {

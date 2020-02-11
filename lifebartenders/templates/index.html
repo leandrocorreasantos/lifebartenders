@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/favicon-lifebartenders.png') }}">
 </head>
 
 <body data-spy="scroll" data-target="#scroll-menu" data-offset="65">
@@ -38,7 +38,7 @@
     <div class="preloader-wrap">
         <div class="preloader-inside">
             <div class="spinner spinner-1">
-                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="responsive img">
+                <img src="{{ url_for('static', filename='img/logo-lifebartenders.png') }}" alt="Logo Life Bartenders">
             </div>
         </div>
     </div>
@@ -59,6 +59,7 @@
                         <div class="col-12 col-6 col-lg-4 col-md-3">
                             <ul class="social-link">
                                 <li><a href="https://www.facebook.com/lifebartenderscascavel/"><i class="fa fa-facebook" target="_blank"></i></a></li>
+                                <li><a href="https://www.instagram.com/lifebartenders/"><i class="fa fa-instagram" target="_blank"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -68,7 +69,7 @@
             <div class="container">
                 <div class="logo-menu-wrap">
                     <div class="logo">
-                        <a href="index.html"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="responsive img"></a>
+                        <a href="index.html"><img src="{{ url_for('static', filename='img/logo-lifebartenders.png') }}" alt="Logo Life Bartenders"></a>
                     </div>
                     <div class="main-menu main-menu-mrg1">
                         <nav>
@@ -106,8 +107,8 @@
                 <img src="{{ url_for('static', filename='img/banner-1.png') }}" alt="responsive img">
                 <div class="hero-caption">
                     <div class="hero-caption-inner animated bounceInDown" data-wow-delay="0.9s" data-wow-duration="1s">
-                        <h1>Disco Night Club</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+                        <h1>Life Bartenders</h1>
+                        <p>Você sonha, nós realizamos</p>
                     </div>
                 </div>
             </div>
@@ -115,8 +116,8 @@
                 <img src="{{ url_for('static', filename='img/banner-2.png') }}" alt="responsive img">
                 <div class="hero-caption">
                     <div class="hero-caption-inner">
-                        <h1>Disco Night Club</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+                        <h1>Life Bartenders</h1>
+                        <p>Você sonha, nós realizamos</p>
                     </div>
                 </div>
             </div>
@@ -129,9 +130,9 @@
             <div class="row">
                 <div class="col-12 foo">
                     <div class="section-title-area">
-                        <h2 class="section-title">Quem Somos</h2>
+                        <h2 class="section-title">Sobre Nós</h2>
                         <div class="section-divider"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid dunt ut labore et dolore ma.Ut enim ad minim veniam, quis nos</p>
+                        <p>Somos uma empresa de Bartenders e aluguéis de estruturas de bar em Umuarama e região.</p>
                     </div>
                 </div>
             </div>
@@ -190,9 +191,9 @@
                 <div class="row">
                     <div class="col-12 foo">
                         <div class="section-title-area-2">
-                            <h2 class="section-title">Próximo Evento</h2>
+                            <h2 class="section-title">Nome do Próximo Evento</h2>
                             <div class="section-divider"></div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incid dunt ut labore et dolore ma.Ut enim ad minim veniam, quis nos</p>
+                            <p>Está aberta a contagem regressiva</p>
                         </div>
                     </div>
                 </div>
@@ -204,25 +205,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="row">
-                    <div class="col-12 foo">
-                        <div id="event-slider-screen" class="owl-carousel owl-theme event-slider">
-                            <div class="item">
-                                <div class="event-fee">Lorem Ipsum Dolor</div>
-                                <div class="event-feature">
-                                    <img src="{{ url_for('static', filename='img/event-1.png') }}" alt="responsive img">
-                                    <div class="caption">
-                                        <div class="caption-inner"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="row">
                     <div class="col-12">
                         <div class="event-btn">
-                            <a href="/agenda" class="btn btn-default btn-sm-field" role="button">Ver Mais</a>
+                            <a href="/agenda" class="btn btn-default btn-sm-field" role="button">Saiba Mais</a>
                         </div>
                     </div>
                 </div>
@@ -230,344 +216,74 @@
         </div>
     </div>
     <!-- End Event Section -->
-    <!-- Gallery Section  -->
+    <!-- Agenda Section -->
     <div class="gallery-area inner-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 foo">
-                    <div class="section-title-area">
-                        <h2 class="section-title">Galeria</h2>
-                        <div class="section-divider"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row no-gutters">
-                <div class="col-12">
-                    <div class="gallery-masonry gallery">
-                        <div class="gallery-item">
-                            <img src="{{ url_for('static', filename='img/gallery-1.png') }}" alt="responsive img">
-                            <div class="caption">
-                                <div class="caption-inner">
-                                    <div class="caption-content">
-                                        <ul>
-                                            <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
-                                            <li><a href="{{ url_for('static', filename='img/gallery-1.png') }}"><i class="fa fa-search-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="{{ url_for('static', filename='img/gallery-2.png') }}" alt="responsive img">
-                            <div class="caption">
-                                <div class="caption-inner">
-                                    <div class="caption-content">
-                                        <ul>
-                                            <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
-                                            <li><a href="{{ url_for('static', filename='img/gallery-2.png') }}"><i class="fa fa-search-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="{{ url_for('static', filename='img/gallery-3.png') }}" alt="responsive img">
-                            <div class="caption">
-                                <div class="caption-inner">
-                                    <div class="caption-content">
-                                        <ul>
-                                            <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
-                                            <li><a href="{{ url_for('static', filename='img/gallery-3.png') }}"><i class="fa fa-search-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="{{ url_for('static', filename='img/gallery-4.png') }}" alt="responsive img">
-                            <div class="caption">
-                                <div class="caption-inner">
-                                    <div class="caption-content">
-                                        <ul>
-                                            <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
-                                            <li><a href="{{ url_for('static', filename='img/gallery-4.png') }}"><i class="fa fa-search-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="{{ url_for('static', filename='img/gallery-5.png') }}" alt="responsive img">
-                            <div class="caption">
-                                <div class="caption-inner">
-                                    <div class="caption-content">
-                                        <ul>
-                                            <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
-                                            <li><a href="{{ url_for('static', filename='img/gallery-5.png') }}"><i class="fa fa-search-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="{{ url_for('static', filename='img/gallery-6.png') }}" alt="responsive img">
-                            <div class="caption">
-                                <div class="caption-inner">
-                                    <div class="caption-content">
-                                        <ul>
-                                            <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
-                                            <li><a href="{{ url_for('static', filename='img/gallery-6.png') }}"><i class="fa fa-search-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Gallery Section -->
-    <!-- Dj's Profile Section  -->
-    <div class="dj-profile-area inner-padding">
-        <div class="dj-profile-area-inner">
+        <div class="gallery-area-inner">
             <div class="container">
                 <div class="row">
                     <div class="col-12 foo">
-                        <div class="section-title-area">
-                            <h2 class="section-title">Most Popular Dj’s Profile</h2>
-                            <div class="section-divider"></div>
+                        <div class="section-title-area-2">
+                            <h2 class="section-title">Confira Nossa Agenda</h2>
                         </div>
                     </div>
                 </div>
-                <div class="dj-profile">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-6">
-                            <div class="tab-item">
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-6 col-lg-6 foo" data-sr='enter'>
-                                        <div data-target="#tab-1" data-toggle="tab" class="profile-item-tab">
-                                            <img src="{{ url_for('static', filename='img/dj-profile-1.png') }}" alt="responsive img">
-                                            <div class="caption">
-                                                <div class="caption-inner">
-                                                    <div class="caption-content">
-                                                        <ul class="profile-link">
-                                                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-6 foo" data-sr='enter'>
-                                        <div data-target="#tab-2" data-toggle="tab" class="profile-item-tab active">
-                                            <img src="{{ url_for('static', filename='img/dj-profile-2.png') }}" alt="responsive img">
-                                            <div class="caption">
-                                                <div class="caption-inner">
-                                                    <div class="caption-content">
-                                                        <ul class="profile-link">
-                                                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-6 foo" data-sr='enter'>
-                                        <div data-target="#tab-3" data-toggle="tab" class="profile-item-tab mn">
-                                            <img src="{{ url_for('static', filename='img/dj-profile-3.png') }}" alt="responsive img">
-                                            <div class="caption">
-                                                <div class="caption-inner">
-                                                    <div class="caption-content">
-                                                        <ul class="profile-link">
-                                                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-6 foo" data-sr='enter'>
-                                        <div data-target="#tab-4" data-toggle="tab" class="profile-item-tab mn">
-                                            <img src="{{ url_for('static', filename='img/dj-profile-4.png') }}" alt="responsive img">
-                                            <div class="caption">
-                                                <div class="caption-inner">
-                                                    <div class="caption-content">
-                                                        <ul class="profile-link">
-                                                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-6">
-                            <div class="profile-tab tab-content foo" data-sr='enter'>
-                                <div class="tab-pane fade show" id="tab-1">
-                                    <h2 class="dj-head">Dj mollik</h2>
-                                    <h3 class="dj-info">dubstep</h3>
-                                    <p>Lorem ipsum dolor sit amet, conec tetur adipi asicing elit, do eiusmod tempor enim minim venia am, at quis incidi adunt ut the labore et dolore magnatne aliqua. Enim enim , veniam,erlenim ad minim veniam.</p>
-                                    <div class="profile">
-                                        <div class="profile-info">
-                                            <div class="am">
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                            </div>
-                                            <p>dubeb</p>
-                                            <h3>2002</h3>
-                                        </div>
-                                        <div class="profile-info">
-                                            <img src="{{ url_for('static', filename='img/disk.png') }}" alt="responsive img">
-                                            <p>latest</p>
-                                            <h3>11.18</h3>
-                                        </div>
-                                        <div class="profile-info">
-                                            <img src="{{ url_for('static', filename='img/headphone.png') }}" alt="responsive img">
-                                            <p>event</p>
-                                            <h3>1011</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane active fade show" id="tab-2">
-                                    <h2 class="dj-head">anika mollik</h2>
-                                    <h3 class="dj-info">dubstep</h3>
-                                    <p>Lorem ipsum dolor sit amet, conec tetur adipi asicing elit, do eiusmod tempor enim minim venia am, at quis incidi adunt ut the labore et dolore magnatne aliqua. Enim enim , veniam,erlenim ad minim veniam.</p>
-                                    <div class="profile">
-                                        <div class="profile-info">
-                                            <div class="am">
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                            </div>
-                                            <p>dubeb</p>
-                                            <h3>2002</h3>
-                                        </div>
-                                        <div class="profile-info">
-                                            <img src="{{ url_for('static', filename='img/disk.png') }}" alt="responsive img">
-                                            <p>latest</p>
-                                            <h3>12.13</h3>
-                                        </div>
-                                        <div class="profile-info">
-                                            <img src="{{ url_for('static', filename='img/headphone.png') }}" alt="responsive img">
-                                            <p>event</p>
-                                            <h3>1012</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade show" id="tab-3">
-                                    <h2 class="dj-head">Dj Sonica</h2>
-                                    <h3 class="dj-info">dubstep</h3>
-                                    <p>Lorem ipsum dolor sit amet, conec tetur adipi asicing elit, do eiusmod tempor enim minim venia am, at quis incidi adunt ut the labore et dolore magnatne aliqua. Enim enim , veniam,erlenim ad minim veniam.</p>
-                                    <div class="profile">
-                                        <div class="profile-info">
-                                            <div class="am">
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                            </div>
-                                            <p>dubeb</p>
-                                            <h3>2002</h3>
-                                        </div>
-                                        <div class="profile-info">
-                                            <img src="{{ url_for('static', filename='img/disk.png') }}" alt="responsive img">
-                                            <p>latest</p>
-                                            <h3>12.00</h3>
-                                        </div>
-                                        <div class="profile-info">
-                                            <img src="{{ url_for('static', filename='img/headphone.png') }}" alt="responsive img">
-                                            <p>event</p>
-                                            <h3>1015</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade show" id="tab-4">
-                                    <h2 class="dj-head">Dj anika</h2>
-                                    <h3 class="dj-info">dubstep</h3>
-                                    <p>Lorem ipsum dolor sit amet, conec tetur adipi asicing elit, do eiusmod tempor enim minim venia am, at quis incidi adunt ut the labore et dolore magnatne aliqua. Enim enim , veniam,erlenim ad minim veniam.</p>
-                                    <div class="profile">
-                                        <div class="profile-info">
-                                            <div class="am">
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                                <span></span>
-                                            </div>
-                                            <p>dubeb</p>
-                                            <h3>2002</h3>
-                                        </div>
-                                        <div class="profile-info">
-                                            <img src="{{ url_for('static', filename='img/disk.png') }}" alt="responsive img">
-                                            <p>latest</p>
-                                            <h3>13.13</h3>
-                                        </div>
-                                        <div class="profile-info">
-                                            <img src="{{ url_for('static', filename='img/headphone.png') }}" alt="responsive img">
-                                            <p>event</p>
-                                            <h3>1010</h3>
-                                        </div>
-                                    </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                    <div class="service-item foo">
+                        <img src="{{ url_for('static', filename='img/service-1.png') }}" alt="responsive img">
+                        <div class="caption">
+                            <div class="caption-inner">
+                                <div class="caption-content">
+                                    <i class="fa fa-glass"></i>
+                                    <h3 class="service-title">drink bar</h3>
+                                    <p>Lorem ipsum atea dolor amet sectetur adip isicing elit, sed do eiua intan olore magna athem offera. atuioUt enim ad minis nostr.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item foo">
+                        <img src="{{ url_for('static', filename='img/service-2.png') }}" alt="responsive img">
+                        <div class="caption">
+                            <div class="caption-inner">
+                                <div class="caption-content">
+                                    <i class="fa fa-cutlery"></i>
+                                    <h3 class="service-title">restaurant</h3>
+                                    <p>Lorem ipsum atea dolor amet sectetur adip isicing elit, sed do eiua intan olore magna athem offera. atuioUt enim ad minis nostr.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item foo">
+                        <img src="{{ url_for('static', filename='img/service-3.png') }}" alt="responsive img">
+                        <div class="caption">
+                            <div class="caption-inner">
+                                <div class="caption-content">
+                                    <i class="fa fa-music"></i>
+                                    <h3 class="service-title">dj’s music</h3>
+                                    <p>Lorem ipsum atea dolor amet sectetur adip isicing elit, sed do eiua intan olore magna athem offera. atuioUt enim ad minis nostr.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Dj's Profile Section -->
+    <!-- End Agenda Section -->
     <!-- Blog Section  -->
     <div class="blog-area inner-padding3">
         <div class="container">
             <div class="row">
                 <div class="col-12 foo">
                     <div class="section-title-area">
-                        <h2 class="section-title">Our Recent Blog</h2>
+                        <h2 class="section-title">Galeria</h2>
                         <div class="section-divider"></div>
+                        <p>Confira os eventos que participamos</p>
                     </div>
                 </div>
             </div>
@@ -584,14 +300,9 @@
                                 <div class="post-caption-inner">
                                     <div class="post-caption-content">
                                         <div class="post-link"><a href="blog-details-sidebar.html" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
-                                        <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Date : 26 oct 2016 </div>
-                                        <h2 class="post-heading"><a href="blog-details-sidebar.html">The  Best Blog Post Dummy Title</a></h2>
+                                        <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Dia : 26 out 2016 </div>
+                                        <h2 class="post-heading"><a href="blog-details-sidebar.html">Aniversário de 15 anos</a></h2>
                                         <p>Adipisicing elit, thsed do the an eiusmod tempor incidi dunt the at dipising elit ased eius mod tempor incidi dunt ipisi cing elit ased.</p>
-                                        <ul class="post-meta">
-                                            <li><a href="#"><i class="fa fa-user"></i>By A Mollik </a></li>
-                                            <li><a href="#"><i class="fa fa-heart"></i>20 Likes</a></li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i>02 Comments</a></li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -599,8 +310,8 @@
                         <div class="post-footer">
                             <div class="post-footer-caption">
                                 <div class="footer-caption-inner">
-                                    <h2 class="post-heading"><a href="blog-details-sidebar.html">The  Best Blog Post Dummy Title</a></h2>
-                                    <div class="post-sticker"><i class="fa fa-clock-o"></i>Date : 26 oct 2016 </div>
+                                    <h2 class="post-heading"><a href="blog-details-sidebar.html">Aniversário de 15 anos</a></h2>
+                                    <div class="post-sticker"><i class="fa fa-clock-o"></i>Dia : 26 out 2016 </div>
                                 </div>
                             </div>
                         </div>
@@ -618,14 +329,9 @@
                                 <div class="post-caption-inner">
                                     <div class="post-caption-content">
                                         <div class="post-link"><a href="blog-details-sidebar.html" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
-                                        <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Date : 26 oct 2016 </div>
-                                        <h2 class="post-heading"><a href="blog-details-sidebar.html">The  Best Blog Post Dummy Title</a></h2>
+                                        <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Dia : 27 out 2016 </div>
+                                        <h2 class="post-heading"><a href="blog-details-sidebar.html">Formatura Engenharia Civil</a></h2>
                                         <p>Adipisicing elit, thsed do the an eiusmod tempor incidi dunt the at dipising elit ased eius mod tempor incidi dunt ipisi cing elit ased.</p>
-                                        <ul class="post-meta">
-                                            <li><a href="#"><i class="fa fa-user"></i>By A Mollik </a></li>
-                                            <li><a href="#"><i class="fa fa-heart"></i>20 Likes</a></li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i>02 Comments</a></li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -633,8 +339,8 @@
                         <div class="post-footer">
                             <div class="post-footer-caption">
                                 <div class="footer-caption-inner">
-                                    <h2 class="post-heading"><a href="blog-details-sidebar.html">The  Best Blog Post Dummy Title</a></h2>
-                                    <div class="post-sticker"><i class="fa fa-clock-o"></i>Date : 26 oct 2016 </div>
+                                    <h2 class="post-heading"><a href="blog-details-sidebar.html">Formatura Engenharia Civil</a></h2>
+                                    <div class="post-sticker"><i class="fa fa-clock-o"></i>Dia : 27 out 2016 </div>
                                 </div>
                             </div>
                         </div>
@@ -652,14 +358,9 @@
                                 <div class="post-caption-inner">
                                     <div class="post-caption-content">
                                         <div class="post-link"><a href="blog-details-sidebar.html" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
-                                        <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Date : 26 oct 2016 </div>
-                                        <h2 class="post-heading"><a href="blog-details-sidebar.html">The  Best Blog Post Dummy Title</a></h2>
+                                        <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Dia : 29 out 2016 </div>
+                                        <h2 class="post-heading"><a href="blog-details-sidebar.html">Casamento Fulano e Fulana</a></h2>
                                         <p>Adipisicing elit, thsed do the an eiusmod tempor incidi dunt the at dipising elit ased eius mod tempor incidi dunt ipisi cing elit ased.</p>
-                                        <ul class="post-meta">
-                                            <li><a href="#"><i class="fa fa-user"></i>By A Mollik </a></li>
-                                            <li><a href="#"><i class="fa fa-heart"></i>20 Likes</a></li>
-                                            <li><a href="#"><i class="fa fa-comments-o"></i>02 Comments</a></li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -667,8 +368,8 @@
                         <div class="post-footer">
                             <div class="post-footer-caption">
                                 <div class="footer-caption-inner">
-                                    <h2 class="post-heading"><a href="blog-details-sidebar.html">The  Best Blog Post Dummy Title</a></h2>
-                                    <div class="post-sticker"><i class="fa fa-clock-o"></i>Date : 26 oct 2016 </div>
+                                    <h2 class="post-heading"><a href="blog-details-sidebar.html">Casamento Fulano e Fulana</a></h2>
+                                    <div class="post-sticker"><i class="fa fa-clock-o"></i>Dia : 29 out 2016 </div>
                                 </div>
                             </div>
                         </div>
@@ -680,44 +381,44 @@
     <!-- End Blog Section  -->
     <!-- Footer Section -->
     <footer>
-        <div class="footer-area foo" data-sr='bottom'>
+        <div class="footer-area footer-area2 foo" data-sr='bottom'>
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="company-logo">
-                            <img class="" src="{{ url_for('static', filename='img/logo.png') }}" alt="responsive img">
+                            <img class="" src="{{ url_for('static', filename='img/logo-lifebartenders.png') }}" alt="Logo Life Bartenders">
                         </div>
                         <div class="footer-content">
                             <ul class="address-list">
                                 <li>
                                     <i class="fa fa-map-marker"></i>
-                                    <p>House No 27, Road No 07, East Road, Dhaka, Bangladesh</p>
+                                    <p>Rua Marialva, <br /> Umuarama - PR</p>
                                 </li>
                                 <li>
                                     <i class="fa fa-phone"></i>
-                                    <p>+660 256 24857</p>
-                                    <p>+660 256 24857</p>
+                                    <p>Whatsapp:</p>
+                                    <p>(44) 98457-5557</p>
                                 </li>
                                 <li>
                                     <i class="fa fa-globe"></i>
-                                    <p>Username@gmail.com</p>
-                                    <p>Damo@gmail.com</p>
+                                    <p>Mande sua mensagem:</p>
+                                    <p>contato@lifebartenders.com.br</p>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                        <h4 class="footer-title">OPENING TIME</h4>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 ml-auto mr-auto">
+                        <h4 class="footer-title">ATENDIMENTO</h4>
                         <div class="footer-content">
                             <div class="opening-time">
-                                <p><strong>Monday-Friday: </strong> <small>8.00 to 18.00</small></p>
-                                <p><strong>Saturday: </strong> <small>9.00 to 18.00</small></p>
-                                <p><strong>Sunday: </strong> <small>10.00 to 16.00</small></p>
+                                <p><strong>Segunda a Sexta: </strong> <small>8h às 18h</small></p>
+                                <p><strong>Sábado: </strong> <small>8h às 12h</small></p>
+                                <!-- <p><strong>Sunday: </strong> <small>10.00 to 16.00</small></p> -->
                                 <p>Every friday of week dolor sit amet, cons ctetur adipisi cing elit.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 ml-auto mr-auto">
                         <h4 class="footer-title">TWITTER FEED</h4>
                         <div class="footer-content">
                             <ul class="twitter-list">
@@ -732,25 +433,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                        <h4 class="footer-title">Newsletters</h4>
-                        <div class="footer-content">
-                            <div class="footer-form">
-                                <p>Lorem ipsum dolor sit amet, cons ectetur adip isicing elit, sed eiusmod.</p>
-                                <form action="#" method="POST">
-                                    <div class="form-group">
-                                        <label for="email2">Email Address...</label>
-                                        <div class="input-group">
-                                            <input type="text" placeholder="Email Address..." class="form-control2" id="email2">
-                                        </div>
-                                    </div>
-                                    <div class="form-btn">
-                                        <button type="submit" class="btn btn-default btn-submit">Subscribe</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -760,17 +442,14 @@
     <div class="copyright-area">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <p class="footer-copyright">Copyright © 2017 <a href="#">Discotemplate.</a> All Right Reserved.</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <ul class="footer-social-link">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                <div class="col-12">
+                    <ul class="footer-social-link social-link-center">
+                        <li><a href="https://www.facebook.com/lifebartenderscascavel/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/lifebartenders/"><i class="fa fa-instagram"></i></a></li>
                     </ul>
+                </div>
+                <div class="col-12 text-center">
+                    <p class="footer-copyright">Copyright © 2020 <a href="https://leandrocorreasantos.github.io">Leandro Santos.</a> All Right Reserved.</p>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-/* 
+/*
 Table of contents
 ===========================================
 - General Style
@@ -128,11 +128,11 @@ textarea {
 .open>.dropdown-toggle.btn-default.focus,
 .open>.dropdown-toggle.btn-default:focus,
 .open>.dropdown-toggle.btn-default:hover {
-    background: #ad2105;
+    background: #751489;
     box-shadow: none;
     color: #fff!important;
     outline: 0px;
-    border-color: #ad2105;
+    border-color: #751489;
 }
 .btn-sm-field {
     font-size: 14px;
@@ -143,8 +143,8 @@ textarea {
     text-transform: uppercase;
     padding: 6px 15px;
     border-radius: 0px;
-    border: 2px solid #d32d0b;
-    background-color: #d32d0b;
+    border: 2px solid #751489;
+    background-color: #751489;
 }
 .btn-submit {
     font-size: 14px;
@@ -153,7 +153,7 @@ textarea {
     letter-spacing: 0;
     color: #fff;
     text-transform: uppercase;
-    background-color: #d32d0b;
+    background-color: #751489;
     padding: 10px 23px;
     border: 0px;
 }
@@ -162,11 +162,11 @@ textarea {
     font-weight: 600;
     line-height: 18px;
     letter-spacing: 0;
-    color: #d32d0b;
+    color: #751489;
     text-transform: uppercase;
     background-color: #fff;
     padding: 10px 23px;
-    border: 1px solid #d32d0b;
+    border: 1px solid #751489;
 }
 .btn-sm-outline {
     font-size: 14px;
@@ -178,21 +178,21 @@ textarea {
     padding: 10px 22px;
     background-color: transparent;
     border-radius: 0px;
-    border: 1px solid #d32d0b;
+    border: 1px solid #751489;
 }
 .btn-search {
     padding: 10px 15px;
     font-size: 14px;
     color: #fff;
     border: 0px;
-    background: #d32d0b;
+    background: #751489;
 }
 .btn-search:hover {
-    background: #ad2105;
+    background: #751489;
     box-shadow: none;
     color: #fff!important;
     outline: 0px;
-    border-color: #ad2105;
+    border-color: #751489;
 }
 
 /*
@@ -441,7 +441,7 @@ label {
 */
 
 
-/* 
+/*
 ---------------------------------
 - Customize Owl Carousel
 ---------------------------------
@@ -476,8 +476,8 @@ label {
     -ms-transform: scale(1.2);
     -o-transform: scale(1.2);
     transform: scale(1.2);
-    background-color: #d32d0b!important;
-    border-color: #d32d0b;
+    background-color: #751489!important;
+    border-color: #751489;
 }
 .owl-nav {
     position: absolute;
@@ -513,5 +513,5 @@ label {
 }
 .owl-prev:hover,
 .owl-next:hover {
-    color: #d32d0b;
+    color: #751489;
 }

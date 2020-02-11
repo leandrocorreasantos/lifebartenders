@@ -1,4 +1,4 @@
-/* 
+/*
 Table Of Contents
 =========================
 - Default Typography
@@ -7,7 +7,7 @@ Table Of Contents
 */
 
 
-/* 
+/*
 --------------------------
 - Default Typography
 --------------------------
@@ -190,7 +190,7 @@ a:visited {
 a:hover,
 a:active,
 a:focus {
-    color: #d32d0b!important;
+    color: #751489!important;
     text-decoration: none;
     outline: 0;
 }
@@ -261,7 +261,7 @@ dd {
     margin: 0 0 0 20px;
 }
 
-/* 
+/*
 --------------------------
 - Custom Typography
 --------------------------
