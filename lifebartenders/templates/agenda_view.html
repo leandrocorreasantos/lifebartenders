@@ -1,0 +1,231 @@
+{% extends "default.html" %}
+{% block title %}Agenda{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <div class="page-header" id="home">
+        <div class="header-caption">
+            <div class="header-caption-contant">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-caption-inner">
+                                <h1>Gallery</h1>
+                                <p><a href="#"> Home </a> // Gallery</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+    <!-- Main Gallery Section -->
+    <div class="main-gallery-area inner-padding2">
+        <div class="container">
+            <div class="row foo">
+                <div class="col-12">
+                    <ul class="gallery-menu">
+                        <li><a href="#photos" class="smoothscroll">photos</a></li>
+                        <li><a href="#videos" class="smoothscroll">videos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row" id="photos">
+                <div class="col-12">
+                    <div class="photos-gallery">
+                        <div class="gallery-masonry gallery">
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-1.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-1.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-2.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-2.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-3.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-3.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-4.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-4.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-5.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-5.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-6.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-6.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-7.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-7.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-8.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-8.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-9.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-9.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-10.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-10.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-11.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-11.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="photo-gallery-inner">
+                                    <img src="{{url_for('static', filename='img/photos-gallery-12.png')}}" alt="responsive img">
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <ul>
+                                                    <li><a href="gallery-photos.html"><i class="fa fa-link"></i></a></li>
+                                                    <li><a src="{{url_for('static', filename='img/photos-gallery-12.png')}}"><i class="fa fa-search-plus"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row foo">
+                <div class="col-12">
+                    <div class="gallery-btn">
+                        <a href="#" class="btn btn-default btn-sm-field" role="button">View More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Gallery Section -->
+{% endblock %}

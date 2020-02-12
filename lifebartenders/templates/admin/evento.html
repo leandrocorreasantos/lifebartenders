@@ -15,6 +15,7 @@
         <th>#</th>
         <th>Evento</th>
         <th>Local</th>
+        <th>Cidade</th>
         <th>Data</th>
         <th>Ações</th>
       </tr>
@@ -25,6 +26,7 @@
         <td>{{ evento.id }}</td>
         <td>{{ evento.title }}</td>
         <td>{{ evento.place }}</td>
+        <td>{{ evento.city.name }}</td>
         <td>{{ evento.date.strftime("%d/%m/%Y %H:%M") }}</td>
         <td class="list-inline">
           <a href="{{url_for('admin.upload_evento', event_id=evento.id)}}"
