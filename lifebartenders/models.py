@@ -53,6 +53,14 @@ class Event(db.Model, BaseModel):
     ))
     city = db.relationship('City', backref='event')
 
+    @property
+    def slug(self):
+        return '{}-{}-{}'.format(
+            self.title.lower().replace(' ', '-'),
+            self.city.name.lower().replace(' ', '-'),
+            self.date.strftime('%d-%m-%Y')
+        )
+
 
 class EventPhoto(db.Model, BaseModel):
     __tablename__ = 'events_photos'

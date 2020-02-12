@@ -1,0 +1,109 @@
+{% extends "default.html" %}
+{% block title %}Eventos{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <div class="page-header" id="home">
+        <div class="header-caption">
+            <div class="header-caption-contant">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-caption-inner">
+                                <h1>Eventos</h1>
+                                <p><a href="#"> Home </a> // Events</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+    <!-- Event Section -->
+    <div class="event-area inner-padding2">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 foo">
+                    <div class="section-title-area">
+                        <h2 class="section-title">Próximo Evento</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-6">
+                    <div class="left-box">
+                        <div class="event-feature2">
+                            <img src="{{ url_for('static', filename='img//event-latest.png') }}" alt="responsive img">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <div class="right-box">
+                        <div class="short-content">
+                            <h4 class="event-name">Título do Próximo Evento</h4>
+                            <p>Lorem ipsum dolor sit amet, consectur adipisicing elit, sed do eiusmod tempor indunt ut labore et dolore magna aliqua reprehend erit in volup tate velit esse cillum dolore fugiat nulla pariatur excepteur sint occaecat.</p>
+                        </div>
+                        <div class="upcoming">
+                            <span class="is-countdown"></span>
+                            <div data-countdown="2020/04/01"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Event Section -->
+    <!-- Popular Blog Section  -->
+    <div class="popular-event-area inner-padding3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 foo">
+                    <div class="section-title-area">
+                        <h2 class="section-title">Próximos Eventos</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3 foo">
+                    <div class="popular-event">
+                        <div class="event-feature2">
+                            <img src="{{ url_for('static', filename='img//popular-event-1.png') }}" alt="responsive img">
+                        </div>
+                        <a href="#" class="event-name">demo title of upcoming event</a>
+                        <div class="date-sticker2">10 December, 2016</div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 foo">
+                    <div class="popular-event">
+                        <div class="event-feature2">
+                            <img src="{{ url_for('static', filename='img//popular-event-2.png') }}" alt="responsive img">
+                        </div>
+                        <a href="#" class="event-name">demo title of upcoming event</a>
+                        <div class="date-sticker2">10 December, 2016</div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 foo">
+                    <div class="popular-event">
+                        <div class="event-feature2">
+                            <img src="{{ url_for('static', filename='img/popular-event-3.png') }}" alt="responsive img">
+                        </div>
+                        <a href="#" class="event-name">demo title of upcoming event</a>
+                        <div class="date-sticker2">10 December, 2016</div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 foo">
+                    <div class="popular-event">
+                        <div class="event-feature2">
+                            <img src="{{ url_for('static', filename='img//popular-event-4.png') }}" alt="responsive img">
+                        </div>
+                        <a href="#" class="event-name">demo title of upcoming event</a>
+                        <div class="date-sticker2">10 December, 2016</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Popular Blog Section -->
+{% endblock %}
