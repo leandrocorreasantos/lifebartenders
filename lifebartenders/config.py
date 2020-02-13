@@ -30,5 +30,7 @@ MAIL_DEBUG = False
 
 # image upload
 UPLOAD_FOLDER = os.path.join(basedir, 'static/img/event_photos')
+UPLOAD_COVER_FOLDER = os.path.join(basedir, 'static/img/event_covers')
 UPLOAD_DEST = 'img/event_photos'
+UPLOAD_COVER_DEST = 'img/event_covers'
 ALLOWED_EXTENSIONS = {'jpg', 'png', 'jpeg'}

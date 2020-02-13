@@ -46,6 +46,7 @@ class Event(db.Model, BaseModel):
     date = db.Column(db.DateTime(), nullable=False)
     place = db.Column(db.String(255), nullable=False)
     visible = db.Column(db.Boolean(), default=True)
+    cover = db.Column(db.String(255))
     city_id = db.Column(db.Integer(), db.ForeignKey(
         'cities.id',
         onupdate='CASCADE',

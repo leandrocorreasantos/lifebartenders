@@ -15,6 +15,7 @@ class EventForm(FlaskForm):
     date = DateTimeField('Data', format='%d/%m/%Y %H:%M')
     place = StringField('Local', validators=[validators.DataRequired()])
     visible = BooleanField('Visível', default=True)
+    cover = FileField('Capa')
     state = SelectField(
         'Estado', choices=[(s.id, s.name) for s in State.query.all()],
         id='Event.states', coerce=int
