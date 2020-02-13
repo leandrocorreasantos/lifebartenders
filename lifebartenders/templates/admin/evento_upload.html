@@ -26,30 +26,29 @@ img.img_event_photo {
 {# https://stackoverflow.com/questions/35649770/how-to-upload-multiple-files-using-flask-in-python #}
 {% block content %}
     <div class="row">
-        <div class="col-sm-12">
-            <p>Evento: {{ evento.title }}</p>
-            <p>Local: {{ evento.place }}</p>
-            <form action="" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    {{ form.hidden_tag() }}
-                    {{ render_field(form.image) }}
-                </div>
-                <div class="form-group">{{ form.submit() }}</div>
-            </form>
+      <div class="col-sm-12">
+      <p>Evento: {{ evento.title }}</p>
+      <p>Local: {{ evento.place }}</p>
+      <form action="" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          {{ form.hidden_tag() }}
+          {{ render_field(form.image) }}
         </div>
+        <div class="form-group">{{ form.submit() }}</div>
+      </form>
+    </div>
     <div class="row">
-    <div class="row">
-        <div id="small-img" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 center">
-            <ul>
-                {% for photo in photos %}
-                    <li class="list_photos" id="{{ photo.id }}">
-                        <img src="{{ url_for('static', filename=photo.image) }}"
-                        title="photo {{ photo.id }}" alt="photo {{ photo.id }}"
-                        height="10%" id="{{ photo.id }}" class="img-responsive inline-block img_event_photo" />
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+      <div id="small-img" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 center">
+        <ul>
+          {% for photo in photos %}
+            <li class="list_photos" id="{{ photo.id }}">
+              <img src="{{ url_for('static', filename=photo.image) }}"
+                  title="photo {{ photo.id }}" alt="photo {{ photo.id }}"
+                  height="10%" id="{{ photo.id }}" class="img-responsive inline-block img_event_photo" />
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
 {% endblock %}
 

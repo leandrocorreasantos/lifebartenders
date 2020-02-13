@@ -8,14 +8,17 @@ from werkzeug.utils import secure_filename
 from flask_user import login_required
 from lifebartenders import db
 from lifebartenders.utils import valid_extension
-from lifebartenders.config import UPLOAD_FOLDER, UPLOAD_DEST, basedir
+from lifebartenders.config import (
+    UPLOAD_COVER_FOLDER, UPLOAD_COVER_DEST,
+    UPLOAD_FOLDER, UPLOAD_DEST, basedir
+)
 from lifebartenders.models import Event, EventPhoto, City, State
 from lifebartenders.forms import EventForm, EventUploadForm
 from lifebartenders.schemas import CitiesSchema
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
-OFFSET = os.environ.get('OFFSET_PAGINATOR', 20)
+OFFSET = int(os.environ.get('OFFSET_PAGINATOR', 20))
 
 
 @admin.route('/_get_cities/<state_id>')
@@ -75,6 +78,24 @@ def add_agenda():
             print('except: {}'.format(e))
             db.session.rollback()
 
+        if 'cover' in request.files:
+            file = request.files['cover']
+            if valid_extension(file.filename):
+                filename = secure_filename(file.filename)
+                try:
+                    file.save(os.path.join(UPLOAD_COVER_FOLDER, filename))
+                except Exception as e:
+                    print('except upload: {}'.format(e))
+
+                agenda.cover = '{}/{}'.format(UPLOAD_COVER_DEST, filename)
+                try:
+                    print('update file')
+                    db.session.flush()
+                    db.session.commit()
+                except Exception as e:
+                    print('cover except: {}'.format(e))
+                    db.session.rollback()
+
         # create folder to upload images
         event_folder = os.path.join(UPLOAD_FOLDER, '{}'.format(agenda.id))
         os.makedirs(event_folder)
@@ -85,6 +106,7 @@ def add_agenda():
     return render_template(
         'admin/agenda_add.html',
         form=form,
+        agenda=agenda
     )
 
 
@@ -99,8 +121,39 @@ def edit_agenda(event_id):
             db.session.add(agenda)
             db.session.commit()
         except Exception as e:
-            print('except: {}'.format(e))
+            print('Erro update: {}'.format(e))
+            flash('Erro ao atualizar dados', 'error')
             db.session.rollback()
+            return redirect(url_for('admin.agenda'))
+
+        if 'cover' in request.files:
+            file = request.files['cover']
+            if valid_extension(file.filename):
+                cover_to_delete = os.path.join(basedir, 'static', agenda.cover)
+                filename = secure_filename(file.filename)
+                # salva nova capa na pasta
+                try:
+                    file.save(os.path.join(UPLOAD_COVER_FOLDER, filename))
+                except Exception as e:
+                    print('Erro upload capa: {}'.format(e))
+                    flash('Erro no upload da capa', 'error')
+                    return redirect(url_for('admin.agenda'))
+
+                # apaga capa antiga
+                if os.path.isfile(cover_to_delete):
+                    os.unlink(cover_to_delete)
+
+                # salva nova capa no banco
+                agenda.cover = '{}/{}'.format(UPLOAD_COVER_DEST, filename)
+                try:
+                    print('update file')
+                    db.session.flush()
+                    db.session.commit()
+                except Exception as e:
+                    print('erro ao salvar capa: {}'.format(e))
+                    flash('Erro ao salvar capa no banco de dados', 'error')
+                    db.session.rollback()
+                    return redirect(url_for('admin.agenda'))
 
         flash('Evento {} editado com sucesso!'.format(event_id), 'success')
         return redirect(url_for('admin.agenda'))
@@ -133,6 +186,10 @@ def delete_agenda():
         print('Error while delete agenda: {}'.format(e))
         flash('Erro ao excluir evento', 'error')
         db.session.rollback()
+
+    cover_to_delete = os.path.join(basedir, 'static', agenda.cover)
+    if os.path.isfile(cover_to_delete):
+        os.unlink(cover_to_delete)
 
     return jsonify({}), 200
 
