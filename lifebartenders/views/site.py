@@ -1,12 +1,34 @@
 from flask import Blueprint, render_template
+from lifebartenders.models import Event
+from datetime import datetime
 
 
 site = Blueprint('site', __name__)
 
 
 @site.route('/')
+@site.route('/home')
 def index():
-    return render_template('index.html')
+    next_event = Event.query.filter(
+        Event.date > datetime.now()
+    ).order_by(
+        Event.date
+    ).first()
+
+    agendas = Event.query.filter(
+        Event.date > datetime.now()
+    ).limit(16).all()
+
+    eventos = Event.query.filter(
+        Event.date < datetime.now()
+    ).limit(16).all()
+
+    return render_template(
+        'index.html',
+        next_event=next_event,
+        agendas=agendas,
+        eventos=eventos
+    )
 
 
 @site.route('/quem-somos')

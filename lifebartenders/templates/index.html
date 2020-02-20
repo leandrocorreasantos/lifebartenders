@@ -45,8 +45,8 @@
                             <div class="caption-inner">
                                 <div class="caption-content">
                                     <i class="fa fa-glass"></i>
-                                    <h3 class="service-title">drink bar</h3>
-                                    <p>Lorem ipsum atea dolor amet sectetur adip isicing elit, sed do eiua intan olore magna athem offera. atuioUt enim ad minis nostr.</p>
+                                    <h3 class="service-title">Serviço de Bartender</h3>
+                                    <p>Serviço de bar completo, com estrutura, mão de obra e matéria-prima para se utilizar no evento.</p>
                                 </div>
                             </div>
                         </div>
@@ -58,9 +58,9 @@
                         <div class="caption">
                             <div class="caption-inner">
                                 <div class="caption-content">
-                                    <i class="fa fa-cutlery"></i>
-                                    <h3 class="service-title">restaurant</h3>
-                                    <p>Lorem ipsum atea dolor amet sectetur adip isicing elit, sed do eiua intan olore magna athem offera. atuioUt enim ad minis nostr.</p>
+                                    <i class="fa fa-building"></i>
+                                    <h3 class="service-title">Locação de Estruturas</h3>
+                                    <p>Locamos estruturas de Bar, utensílios e vários objetos de bar para decoração do seu evento.</p>
                                 </div>
                             </div>
                         </div>
@@ -72,9 +72,9 @@
                         <div class="caption">
                             <div class="caption-inner">
                                 <div class="caption-content">
-                                    <i class="fa fa-music"></i>
-                                    <h3 class="service-title">dj’s music</h3>
-                                    <p>Lorem ipsum atea dolor amet sectetur adip isicing elit, sed do eiua intan olore magna athem offera. atuioUt enim ad minis nostr.</p>
+                                    <i class="fa fa-graduation-cap"></i>
+                                    <h3 class="service-title">Cursos</h3>
+                                    <p>Ministramos cursos de Bartender pra quem tem vontade de conhecer sobre a área e começar seu próprio negócio.</p>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                 <div class="row">
                     <div class="col-12 foo">
                         <div class="section-title-area-2">
-                            <h2 class="section-title">Nome do Próximo Evento</h2>
+                            <h2 class="section-title">{{ next_event.title }}</h2>
                             <div class="section-divider"></div>
                             <p>Está aberta a contagem regressiva</p>
                         </div>
@@ -102,7 +102,7 @@
                     <div class="col-12">
                         <div class="upcoming foo">
                             <span class="is-countdown"></span>
-                            <div data-countdown="2020/04/01 16:30"></div>
+                            <div data-countdown="{{ next_event.date.strftime('%Y-%m-%d %H:%M') }}"></div>
                         </div>
                     </div>
                 </div>
@@ -131,66 +131,21 @@
             <div class="row">
                 <div class="col-12 foo">
                     <div id="jockey-slider-screen" class="owl-carousel owl-theme jockey-slider">
-                        <div class="item">
-                            <div class="jockey-feature">
-                                <img src="{{url_for('static',filename='img/jockey-1.png')}}" alt="responsive img">
-                                <div class="caption">
-                                    <div class="caption-inner">
-                                        <div class="caption-content">
-                                            <h3>aritry</h3>
+                        {% for agenda in agendas %}
+                            <div class="item">
+                                <div class="jockey-feature">
+                                    <img src="{{ url_for('static',filename=agenda.cover) }}"
+                                        alt="{{ agenda.title }}" />
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <h3>{{ agenda.title }}</h3>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="jockey-feature">
-                                <img src="{{url_for('static',filename='img/jockey-2.png')}}" alt="responsive img">
-                                <div class="caption">
-                                    <div class="caption-inner">
-                                        <div class="caption-content">
-                                            <h3>rupayon</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="jockey-feature">
-                                <img src="{{url_for('static',filename='img/jockey-3.png')}}" alt="responsive img">
-                                <div class="caption">
-                                    <div class="caption-inner">
-                                        <div class="caption-content">
-                                            <h3>anila</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="jockey-feature">
-                                <img src="{{url_for('static',filename='img/jockey-4.png')}}" alt="responsive img">
-                                <div class="caption">
-                                    <div class="caption-inner">
-                                        <div class="caption-content">
-                                            <h3>rupayon</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="jockey-feature">
-                                <img src="{{url_for('static',filename='img/jockey-3.png')}}" alt="responsive img">
-                                <div class="caption">
-                                    <div class="caption-inner">
-                                        <div class="caption-content">
-                                            <h3>Sohalika</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -210,93 +165,37 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 foo">
-                    <div class="post-row">
-                        <div class="post-header">
-                            <div class="post-feature">
-                                <img src="{{ url_for('static', filename='img/post-feature-1.png') }}" alt="responsive img">
+                {% for evento in eventos %}
+                    <div class="col-12 col-md-6 col-lg-4 foo">
+                        <div class="post-row">
+                            <div class="post-header">
+                                <div class="post-feature">
+                                    <img src="{{ url_for('static', filename=evento.cover) }}" alt="{{ evento.title }}" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="post-body">
-                            <div class="post-caption">
-                                <div class="post-caption-inner">
-                                    <div class="post-caption-content">
-                                        <div class="post-link"><a href="blog-details-sidebar.html" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
-                                        <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Dia : 26 out 2016 </div>
-                                        <h2 class="post-heading"><a href="blog-details-sidebar.html">Aniversário de 15 anos</a></h2>
-                                        <p>Adipisicing elit, thsed do the an eiusmod tempor incidi dunt the at dipising elit ased eius mod tempor incidi dunt ipisi cing elit ased.</p>
+                            {# <div class="post-body">
+                                <div class="post-caption">
+                                    <div class="post-caption-inner">
+                                        <div class="post-caption-content">
+                                            <div class="post-link"><a href="blog-details-sidebar.html" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
+                                            <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Dia : 26 out 2016 </div>
+                                            <h2 class="post-heading"><a href="blog-details-sidebar.html">Aniversário de 15 anos</a></h2>
+                                            <p>Adipisicing elit, thsed do the an eiusmod tempor incidi dunt the at dipising elit ased eius mod tempor incidi dunt ipisi cing elit ased.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> #}
+                            <div class="post-footer">
+                                <div class="post-footer-caption">
+                                    <div class="footer-caption-inner">
+                                        <h2 class="post-heading"><a href="blog-details-sidebar.html">{{ evento.title }}</a></h2>
+                                        <div class="post-sticker"><i class="fa fa-clock-o"></i>Dia: {{ evento.date.strftime("%d/%m/%Y") }} </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="post-footer">
-                            <div class="post-footer-caption">
-                                <div class="footer-caption-inner">
-                                    <h2 class="post-heading"><a href="blog-details-sidebar.html">Aniversário de 15 anos</a></h2>
-                                    <div class="post-sticker"><i class="fa fa-clock-o"></i>Dia : 26 out 2016 </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 foo">
-                    <div class="post-row">
-                        <div class="post-header">
-                            <div class="post-feature">
-                                <img src="{{ url_for('static', filename='img/post-feature-2.png') }}" alt="responsive img">
-                            </div>
-                        </div>
-                        <div class="post-body">
-                            <div class="post-caption">
-                                <div class="post-caption-inner">
-                                    <div class="post-caption-content">
-                                        <div class="post-link"><a href="blog-details-sidebar.html" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
-                                        <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Dia : 27 out 2016 </div>
-                                        <h2 class="post-heading"><a href="blog-details-sidebar.html">Formatura Engenharia Civil</a></h2>
-                                        <p>Adipisicing elit, thsed do the an eiusmod tempor incidi dunt the at dipising elit ased eius mod tempor incidi dunt ipisi cing elit ased.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-footer">
-                            <div class="post-footer-caption">
-                                <div class="footer-caption-inner">
-                                    <h2 class="post-heading"><a href="blog-details-sidebar.html">Formatura Engenharia Civil</a></h2>
-                                    <div class="post-sticker"><i class="fa fa-clock-o"></i>Dia : 27 out 2016 </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 foo hidden-sm">
-                    <div class="post-row">
-                        <div class="post-header">
-                            <div class="post-feature">
-                                <img src="{{ url_for('static', filename='img/post-feature-3.png') }}" alt="responsive img">
-                            </div>
-                        </div>
-                        <div class="post-body">
-                            <div class="post-caption">
-                                <div class="post-caption-inner">
-                                    <div class="post-caption-content">
-                                        <div class="post-link"><a href="blog-details-sidebar.html" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
-                                        <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Dia : 29 out 2016 </div>
-                                        <h2 class="post-heading"><a href="blog-details-sidebar.html">Casamento Fulano e Fulana</a></h2>
-                                        <p>Adipisicing elit, thsed do the an eiusmod tempor incidi dunt the at dipising elit ased eius mod tempor incidi dunt ipisi cing elit ased.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-footer">
-                            <div class="post-footer-caption">
-                                <div class="footer-caption-inner">
-                                    <h2 class="post-heading"><a href="blog-details-sidebar.html">Casamento Fulano e Fulana</a></h2>
-                                    <div class="post-sticker"><i class="fa fa-clock-o"></i>Dia : 29 out 2016 </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

@@ -27,7 +27,7 @@
         <td>{{ agenda.place }}</td>
         <td>{{ agenda.date.strftime("%d/%m/%Y %H:%M") }}</td>
         <td class="list-inline">
-         <a href="{{url_for('admin.edit_agenda', event_id=agenda.id)}}"
+         <a href="{{ url_for('admin.edit_agenda', event_id=agenda.id) }}"
          role="button" class="btn btn-dark btn-sm list-inline-item">
          <span class="fa fa-edit"></span>
        </a>
