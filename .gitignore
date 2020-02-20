@@ -133,5 +133,5 @@ dmypy.json
 *.swp
 
 # image upload
-lifebartenders/static/img/event_photos/*
-lifebartenders/static/img/event_covers/*
+lifebartenders/static/img/event_photos/*.*
+lifebartenders/static/img/event_covers/*.*
