@@ -34,7 +34,7 @@ def quem_somos():
 
 @site.route('/agenda')
 def agenda():
-
+    next_event = Event.next_event()
     agendas = Event.query.filter(
         Event.date > datetime.now()
     ).order_by(
@@ -42,27 +42,24 @@ def agenda():
     ).limit(12).all()
     return render_template(
         'agenda.html',
-        agendas=agendas
+        agendas=agendas,
+        next_event=next_event
     )
 
 
 @site.route('/eventos')
 def eventos():
-    next_event = Event.next_event()
-
     eventos = Event.query.filter(
         Event.date < datetime.now()
     ).limit(16).all()
 
     return render_template(
         'eventos.html',
-        next_event=next_event,
         eventos=eventos
     )
 
 
 @site.route('/evento/<int:evento_id>/<evento_slug>')
-# @site.route('/evento/<int:evento_id>/<evento_slug>/<int:page>')
 def agenda_view(evento_id, evento_slug):
     page = request.args.get('page', 1, type=int)
     offset = request.args.get('offset', 8, type=int)

@@ -5,7 +5,7 @@
     <div class="hero-area" id="home">
         <div id="hero-slider-screen" class="owl-carousel owl-theme hero-slider-inner">
             <div class="item">
-                <img src="{{ url_for('static', filename='img/banner-1.png') }}" alt="responsive img">
+                <img src="{{ url_for('static', filename='img/banner-1.png') }}" alt="Life Bartenders Banner">
                 <div class="hero-caption">
                     <div class="hero-caption-inner animated bounceInDown" data-wow-delay="0.9s" data-wow-duration="1s">
                         <h1>Life Bartenders</h1>
@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-md-6 col-lg-4">
                     <div class="service-item foo">
-                        <img src="{{ url_for('static', filename='img/service-1.png') }}" alt="responsive img">
+                        <img src="{{ url_for('static', filename='img/service-1.png') }}" alt="Serviço de Bartender">
                         <div class="caption">
                             <div class="caption-inner">
                                 <div class="caption-content">
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="service-item foo">
-                        <img src="{{ url_for('static', filename='img/service-2.png') }}" alt="responsive img">
+                        <img src="{{ url_for('static', filename='img/service-2.png') }}" alt="Locação de Estruturas">
                         <div class="caption">
                             <div class="caption-inner">
                                 <div class="caption-content">
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="service-item foo">
-                        <img src="{{ url_for('static', filename='img/service-3.png') }}" alt="responsive img">
+                        <img src="{{ url_for('static', filename='img/service-3.png') }}" alt="Cursos">
                         <div class="caption">
                             <div class="caption-inner">
                                 <div class="caption-content">
@@ -100,7 +100,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="event-btn">
-                            <a href="/agenda" class="btn btn-default btn-sm-field" role="button">Saiba Mais</a>
+                            <a href="{{ url_for('site.agenda') }}" class="btn btn-default btn-sm-field" role="button">Saiba Mais</a>
                         </div>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
             <div class="row">
                 <div class="col-12 foo">
                     <div class="section-title-area">
-                        <h2 class="section-title">Galeria de Imagens</h2>
+                        <h2 class="section-title">Eventos</h2>
                         <div class="section-divider"></div>
                         <p>Veja como foram nossos últimos eventos</p>
                     </div>
@@ -168,9 +168,9 @@
                                 <div class="post-caption">
                                     <div class="post-caption-inner">
                                         <div class="post-caption-content">
-                                            <div class="post-link"><a href="#" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
+                                            <div class="post-link"><a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug) }}" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
                                             <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Dia: {{ evento.date.strftime("%d/%m/%Y") }}</div>
-                                            <h2 class="post-heading"><a href="blog-details-sidebar.html">{{ evento.title }}</a></h2>
+                                            <h2 class="post-heading"><a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug) }}">{{ evento.title }}</a></h2>
                                             <p>{{ evento.description[:150] }}...</p>
                                         </div>
                                     </div>
