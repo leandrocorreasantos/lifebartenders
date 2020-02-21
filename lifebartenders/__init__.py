@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
+from flask_images import Images
 
 
 dotenv_path = os.path.join(os.getcwd(), '.env')
@@ -16,3 +17,5 @@ app.config.from_object('lifebartenders.config')
 db = SQLAlchemy(app)
 
 mail = Mail(app)
+
+images = Images(app)

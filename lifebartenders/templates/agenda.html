@@ -31,42 +31,17 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-3 foo">
-                    <div class="popular-event">
-                        <div class="event-feature2">
-                            <img src="{{url_for('static',filename='img/popular-event-1.png')}}" alt="responsive img">
+                {% for agenda in agendas %}
+                    <div class="col-12 col-md-6 col-lg-3 foo">
+                        <div class="popular-event">
+                            <div class="event-feature2">
+                                <img src="{{ resized_img_src(agenda.cover, width='600', height='598', mode='crop')}}" alt="{{ agenda.title }}">
+                            </div>
+                            <a href="#" class="event-name">{{ agenda.title }}</a>
+                            <div class="date-sticker2">{{ agenda.date.strftime("%d/%m/%Y") }}</div>
                         </div>
-                        <a href="#" class="event-name">demo title of upcoming event</a>
-                        <div class="date-sticker2">10 December, 2016</div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 foo">
-                    <div class="popular-event">
-                        <div class="event-feature2">
-                            <img src="{{url_for('static',filename='img/popular-event-2.png')}}" alt="responsive img">
-                        </div>
-                        <a href="#" class="event-name">demo title of upcoming event</a>
-                        <div class="date-sticker2">10 December, 2016</div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 foo">
-                    <div class="popular-event">
-                        <div class="event-feature2">
-                            <img src="{{url_for('static',filename='img/popular-event-3.png')}}" alt="responsive img">
-                        </div>
-                        <a href="#" class="event-name">demo title of upcoming event</a>
-                        <div class="date-sticker2">10 December, 2016</div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 foo">
-                    <div class="popular-event">
-                        <div class="event-feature2">
-                            <img src="{{url_for('static',filename='img/popular-event-4.png')}}" alt="responsive img">
-                        </div>
-                        <a href="#" class="event-name">demo title of upcoming event</a>
-                        <div class="date-sticker2">10 December, 2016</div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
