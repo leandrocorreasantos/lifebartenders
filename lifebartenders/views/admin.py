@@ -127,9 +127,13 @@ def edit_agenda(event_id):
             return redirect(url_for('admin.agenda'))
 
         if 'cover' in request.files:
+            cover_to_delete = ''
             file = request.files['cover']
             if valid_extension(file.filename):
-                cover_to_delete = os.path.join(basedir, 'static', agenda.cover)
+                if agenda.cover:
+                    cover_to_delete = os.path.join(
+                        basedir, 'static', agenda.cover
+                    )
                 filename = secure_filename(file.filename)
                 # salva nova capa na pasta
                 try:

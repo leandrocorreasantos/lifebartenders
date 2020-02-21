@@ -1,5 +1,6 @@
 from lifebartenders import app, db
 from flask_user import UserMixin, UserManager
+from datetime import datetime
 
 
 class BaseModel:
@@ -53,6 +54,7 @@ class Event(db.Model, BaseModel):
         ondelete='RESTRICT'
     ))
     city = db.relationship('City', backref='event')
+    photos = db.relationship('EventPhoto', backref='event')
 
     @property
     def slug(self):
@@ -61,6 +63,14 @@ class Event(db.Model, BaseModel):
             self.city.name.lower().replace(' ', '-'),
             self.date.strftime('%d-%m-%Y')
         )
+
+    @classmethod
+    def next_event(cls):
+        return cls.query.filter(
+            Event.date > datetime.now()
+        ).order_by(
+            Event.date
+        ).first()
 
 
 class EventPhoto(db.Model, BaseModel):
@@ -72,4 +82,4 @@ class EventPhoto(db.Model, BaseModel):
         onupdate='CASCADE',
         ondelete='RESTRICT'
     ))
-    event = db.relationship('Event', backref='event_photo')
+    # event = db.relationship('Event', backref='event_photo')
