@@ -1,10 +1,13 @@
-from flask import Blueprint, render_template, request, flash
-from lifebartenders.models import Event, EventPhoto
+import html
 from datetime import datetime
+from sqlalchemy import distinct
+from sqlalchemy.sql.expression import extract
+from flask import Blueprint, render_template, request, flash, make_response
+from lifebartenders.models import Event, EventPhoto
 from lifebartenders.forms import ContatoForm
 from lifebartenders import mail, log
+from lifebartenders.config import SITE_URL
 from flask_mail import Message
-import html
 
 
 site = Blueprint('site', __name__)
@@ -110,3 +113,48 @@ def contato():
         'contato.html',
         form=form
     )
+
+
+@site.route('/sitemap-<int:year>.xml')
+def sitemap_by_year(year):
+    eventos = Event.query.filter(
+        Event.date < datetime.now()
+    ).filter(
+        extract('year', Event.date) == year
+    ).order_by(
+        Event.date
+    ).all()
+
+    sitemap_xml = render_template(
+        'sitemap_by_year.xml',
+        eventos=eventos,
+        site=SITE_URL
+    )
+
+    response = make_response(sitemap_xml)
+    response.headers['Content-Type'] = 'application/xml'
+    return response
+
+
+@site.route('/sitemaps.xml')
+def sitemaps():
+    years = Event.query.with_entities(
+        distinct(extract('year', Event.date))
+    ).all()
+
+    sitemap_xml = render_template(
+        'sitemap_list.xml',
+        years=years,
+        site=SITE_URL
+    )
+    response = make_response(sitemap_xml)
+    response.headers['Content-Type'] = 'application/xml'
+    return response
+
+
+@site.route('/sitemap.xml')
+def static_sitemap():
+    sitemap = render_template('sitemap_static.xml', site=SITE_URL)
+    response = make_response(sitemap)
+    response.headers['Content-Type'] = 'application/xml'
+    return response
