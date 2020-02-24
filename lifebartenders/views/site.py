@@ -1,6 +1,10 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, flash
 from lifebartenders.models import Event, EventPhoto
 from datetime import datetime
+from lifebartenders.forms import ContatoForm
+from lifebartenders import mail, log
+from flask_mail import Message
+import html
 
 
 site = Blueprint('site', __name__)
@@ -68,8 +72,6 @@ def agenda_view(evento_id, evento_slug):
         Event.id == EventPhoto.event_id
     ).paginate(page, offset, False)
 
-    print(fotos.__dict__)
-
     return render_template(
         'agenda_view.html',
         evento=evento,
@@ -77,6 +79,34 @@ def agenda_view(evento_id, evento_slug):
     )
 
 
-@site.route('/contato')
+@site.route('/contato', methods=['GET', 'POST'])
 def contato():
-    return render_template('contato.html')
+    form = ContatoForm(request.form)
+    if request.method == 'POST':
+        msg = Message(
+            'Contato do site lifebartenders',
+            sender=(form.nome.data, form.email.data),
+            recipients=['leandro.admo@gmail.com'],
+            reply_to=form.email.data
+        )
+        mensagem = 'Nome: {}\n E-mail: {}\n Telefone:{}\n Mensagem: {}'.format(
+            form.nome.data,
+            form.email.data,
+            form.telefone.data,
+            html.escape(form.mensagem.data)
+        )
+        msg.body = mensagem
+
+        try:
+            with mail.connect() as conn:
+                conn.send(mensagem)
+            flash('Mensagem enviada com sucesso!', 'success')
+            log.info('mensagem enviada')
+        except Exception as e:
+            log.error('Erro ao enviar mensagem: {}'.format(e))
+            flash('Desculpe, não foi posível enviar a mensagem', 'error')
+
+    return render_template(
+        'contato.html',
+        form=form
+    )

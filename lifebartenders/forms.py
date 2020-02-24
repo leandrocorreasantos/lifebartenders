@@ -34,3 +34,14 @@ class EventUploadForm(FlaskForm):
     event_id = HiddenField()
     image = FileField('Imagem')
     submit = SubmitField('Upload')
+
+
+class ContatoForm(FlaskForm):
+
+    nome = StringField('Nome', validators=[validators.DataRequired()])
+    telefone = StringField('Telefone')
+    email = StringField('E-mail', validators=[
+        validators.DataRequired(), validators.Email()
+    ])
+    mensagem = TextAreaField('Mensagem')
+    submit = SubmitField('Enviar Mensagem')
