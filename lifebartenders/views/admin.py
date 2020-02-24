@@ -6,7 +6,7 @@ from flask import (
 )
 from werkzeug.utils import secure_filename
 from flask_user import login_required
-from lifebartenders import db
+from lifebartenders import db, log
 from lifebartenders.utils import valid_extension
 from lifebartenders.config import (
     UPLOAD_COVER_FOLDER, UPLOAD_COVER_DEST,
@@ -75,7 +75,7 @@ def add_agenda():
             db.session.add(agenda)
             db.session.commit()
         except Exception as e:
-            print('except: {}'.format(e))
+            log.error('except: {}'.format(e))
             db.session.rollback()
 
         if 'cover' in request.files:
@@ -85,15 +85,15 @@ def add_agenda():
                 try:
                     file.save(os.path.join(UPLOAD_COVER_FOLDER, filename))
                 except Exception as e:
-                    print('except upload: {}'.format(e))
+                    log.error('except upload: {}'.format(e))
 
                 agenda.cover = '{}/{}'.format(UPLOAD_COVER_DEST, filename)
                 try:
-                    print('update file')
+                    log.info('update file')
                     db.session.flush()
                     db.session.commit()
                 except Exception as e:
-                    print('cover except: {}'.format(e))
+                    log.error('cover except: {}'.format(e))
                     db.session.rollback()
 
         # create folder to upload images
@@ -121,7 +121,7 @@ def edit_agenda(event_id):
             db.session.add(agenda)
             db.session.commit()
         except Exception as e:
-            print('Erro update: {}'.format(e))
+            log.error('Erro update: {}'.format(e))
             flash('Erro ao atualizar dados', 'error')
             db.session.rollback()
             return redirect(url_for('admin.agenda'))
@@ -139,7 +139,7 @@ def edit_agenda(event_id):
                 try:
                     file.save(os.path.join(UPLOAD_COVER_FOLDER, filename))
                 except Exception as e:
-                    print('Erro upload capa: {}'.format(e))
+                    log.error('Erro upload capa: {}'.format(e))
                     flash('Erro no upload da capa', 'error')
                     return redirect(url_for('admin.agenda'))
 
@@ -150,11 +150,11 @@ def edit_agenda(event_id):
                 # salva nova capa no banco
                 agenda.cover = '{}/{}'.format(UPLOAD_COVER_DEST, filename)
                 try:
-                    print('update file')
+                    log.info('update file')
                     db.session.flush()
                     db.session.commit()
                 except Exception as e:
-                    print('erro ao salvar capa: {}'.format(e))
+                    log.error('erro ao salvar capa: {}'.format(e))
                     flash('Erro ao salvar capa no banco de dados', 'error')
                     db.session.rollback()
                     return redirect(url_for('admin.agenda'))
@@ -187,7 +187,7 @@ def delete_agenda():
         db.session.delete(agenda)
         db.session.commit()
     except Exception as e:
-        print('Error while delete agenda: {}'.format(e))
+        log.error('Error while delete agenda: {}'.format(e))
         flash('Erro ao excluir evento', 'error')
         db.session.rollback()
 
@@ -231,7 +231,7 @@ def upload_evento(event_id):
                     )
                     file.save(os.path.join(event_folder, filename))
                 except Exception as e:
-                    print('except upload: {}'.format(e))
+                    log.error('except upload: {}'.format(e))
 
                 photo.image = filedest
                 photo.event_id = event_id
@@ -239,7 +239,7 @@ def upload_evento(event_id):
                     db.session.add(photo)
                     db.session.commit()
                 except Exception as e:
-                    print('Except save: {}'.format(e))
+                    log.error('Except save: {}'.format(e))
                     db.session.rollback()
 
     photos = EventPhoto.query.filter(EventPhoto.event_id == event_id).all()
@@ -261,7 +261,7 @@ def delete_photo():
         db.session.delete(photo)
         db.session.commit()
     except Exception as e:
-        print('Error while delete image: {}'.format(e))
+        log.error('Error while delete image: {}'.format(e))
         db.session.rollback()
         return jsonify({}, 204)
 

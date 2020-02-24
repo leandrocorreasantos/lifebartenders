@@ -1,7 +1,7 @@
 import sys
 import errno
 import csv
-from lifebartenders import app, db
+from lifebartenders import app, db, log
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from models import City, State, User, user_manager
@@ -22,8 +22,7 @@ def seed():
         'email': 'admin@lifebartenders.com',
         'active': True,
         'email_confirmed_at': True
-        }
-    )
+    })
     db.session.add(user)
     db.session.commit()
 
@@ -63,7 +62,7 @@ def seed():
             db.session.add(state)
             db.session.commit()
         except Exception as e:
-            print('Error while seed states: {}'.format(e))
+            log.error('Error while seed states: {}'.format(e))
     states_ids = {
         'AC': 1, 'AL': 2, 'AP': 3, 'AM': 4, 'BA': 5, 'CE': 6, 'DF': 7, 'ES': 8,
         'GO': 9, 'MA': 10, 'MT': 11, 'MS': 12, 'MG': 13, 'PA': 14, 'PB': 15,
@@ -84,11 +83,11 @@ def seed():
                 db.session.add(city)
                 db.session.commit()
             except Exception as e:
-                print('Error while seed cities: {}'.format(e))
+                log.error('Error while seed cities: {}'.format(e))
 
 
 if __name__ == '__main__':
     if not app.debug:
-        print('App is in production mode. Migration skipped')
+        log.info('App is in production mode. Migration skipped')
         sys.exit(errno.EACCES)
     manager.run()
