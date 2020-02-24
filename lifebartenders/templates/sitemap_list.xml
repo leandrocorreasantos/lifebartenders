@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.google.com/schemas/sitemap/0.84">
+    <sitemap>
+        <loc>{{ site }}/sitemap.xml</loc>
+    </sitemap>
+    {% for ano in years %}
+    <sitemap>
+        <loc>{{ site }}/sitemap-{{ ano[0] }}.xml</loc>
+    </sitemap>
+    {% endfor %}
+</sitemapindex>
