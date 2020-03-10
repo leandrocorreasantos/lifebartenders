@@ -1,0 +1,49 @@
+{% extends "default.html" %}
+{% block title %}Eventos{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <div class="page-header" id="home">
+        <div class="header-caption">
+            <div class="header-caption-contant">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-caption-inner">
+                                <h1>Eventos</h1>
+                                <p><a href="/"> Home </a> // Eventos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+    <!-- Popular Blog Section  -->
+    <div class="popular-event-area inner-padding3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 foo">
+                    <div class="section-title-area">
+                        <h2 class="section-title">Últimos Eventos</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for evento in eventos %}
+                    <div class="col-12 col-md-6 col-lg-3 foo">
+                        <div class="popular-event">
+                            <div class="event-feature2">
+                                <img src="{{ resized_img_src(evento.cover, width='600', height='598', mode='crop') }}" alt="{{ evento.title }}">
+                            </div>
+                            <a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug) }}" class="event-name">{{ evento.title }}</a>
+                            <div class="date-sticker2">{{ evento.date.strftime("%d/%m/%Y") }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- End Popular Blog Section -->
+{% endblock %}

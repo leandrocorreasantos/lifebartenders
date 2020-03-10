@@ -1,0 +1,42 @@
+{% macro render_field(field) -%}
+<div class="form-group">
+    {% if field.label %}
+        {{ field.label }}
+    {% endif %}
+
+    {{ field(**kwargs)|safe }}
+    {% if field.errors %}
+    <ul class="errors">
+        {% for error in field.errors %}
+        <li>{{ error|e }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{%- endmacro %}
+
+{% macro render_textarea(field) -%}
+<div class="form-group">
+    <label> {{ field.label }} </label>
+    {{ field(**kwargs) }}
+    <ul class="errors">
+        {% for error in field.errors %}
+        <li>{{ error|e }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{%- endmacro %}
+
+{% macro render_checkbox(field) -%}
+<div class="custom-control custom-checkbox custom-control-inline">
+    <label>
+        {{ field(**kwargs) }}
+        {{ field.label(class='custom-control-label') }}
+    </label>
+    <ul class="errors">
+        {% for error in field.errors %}
+        <li>{{ error|e }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{%- endmacro %}

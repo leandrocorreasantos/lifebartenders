@@ -1,0 +1,68 @@
+{% extends "default.html" %}
+{% block title %}Agenda{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <div class="page-header" id="home">
+        <div class="header-caption">
+            <div class="header-caption-contant">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-caption-inner">
+                                <h1>{{ evento.title }}</h1>
+                                <p>
+                                    <a href="/"> Home </a> // <a href='/eventos'> Eventos</a> // {{ evento.title }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+    <!-- Main Gallery Section -->
+    <div class="main-gallery-area inner-padding2">
+        <div class="container">
+            <div class="row" id="photos">
+                <div class="col-12">
+                    <div class="photos-gallery">
+                        <div class="gallery-masonry gallery">
+                            {% for foto in fotos.items %}
+                                <div class="gallery-item">
+                                    <div class="photo-gallery-inner">
+                                        <img src="{{ resized_img_src(foto.image, width='600', mode='pad', background='#000000')}}" alt="{{ evento.title }}">
+                                        <div class="caption">
+                                            <div class="caption-inner">
+                                                <div class="caption-content">
+                                                    <ul>
+                                                        <li><a href="{{ url_for('static', filename=foto.image) }}"><i class="fa fa-search-plus"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row foo">
+                <div class="col-12">
+                    <div class="gallery-btn">
+                        {% if fotos.has_prev %}
+                            <a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug, page=fotos.prev_num) }}" class="btn btn-default btn-sm-field" role="button"> &laquo;</a>
+                        {% endif %}
+                        <div class="btn btn-default btn-sm-field" role="button">{{ fotos.page }}</div>
+                        {% if fotos.has_next %}
+                            <a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug, page=fotos.next_num) }}" class="btn btn-default btn-sm-field" role="button"> &raquo;</a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Gallery Section -->
+{% endblock %}

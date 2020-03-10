@@ -1,0 +1,91 @@
+{% extends "default.html" %}
+{% block title %}Contato{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <div class="page-header" id="home">
+        <div class="header-caption">
+            <div class="header-caption-contant">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-caption-inner">
+                                <h1>Contato</h1>
+                                <p> <a href="/"> Home </a> // Contato</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+    <!-- Contact Us Section -->
+    <div class="contact-area inner-padding2">
+        <div class="container">
+            <form class="" action="" method="post" id="cf" enctype="multipart/form-data">
+                <h3>MANDE SUA MENSAGEM</h3>
+                <div class="cf-msg"></div>
+                <div class="contact-form row">
+                    <div class="contact-select col-12 col-md-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                {{ form.nome(class='form-control', placeholder='Nome *', id='fname') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-select col-12 col-md-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                {{ form.telefone(class='form-control', placeholder='Telefone', id='phone') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-select col-12 col-md-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                {{ form.email(class='form-control', placeholder='E-mail *', id='email') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-select col-12 col-md-6">
+                        <div class="form-group">
+                            <div class="input-group mn">
+                                {{ form.mensagem(class='form-control form-message', placeholder='Mensagem', id='msg', rows='3') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-select col-12 col-md-6">
+                        {{ form.submit(id='submit', class='btn btn-default btn-submit') }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- End Contact Us Section -->
+    <!-- Map Section -->
+    <div class="map-area inner-padding3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4 pn">
+                    <div class="map-feature">
+                    </div>
+                </div>
+                <div class="col-8 pn">
+                    <div class="map-contacts map-feature">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3650.84569793266!2d-53.3288648!3d-23.7885084!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f2d6ea6f839d6d%3A0x71bbd6282679ae10!2sR.%20Domingo%20Cano%20Lopes%2C%202406%2C%20Umuarama%20-%20PR%2C%2087506-475!5e0!3m2!1spt-BR!2sbr!4v1582041117942!5m2!1spt-BR!2sbr" frameborder="0" style="border:0;width:100%;height:100%" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Map Section -->
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input[name=telefone]').mask('(99)9999-99999?');
+    })
+</script>
+{% endblock %}

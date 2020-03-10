@@ -1,0 +1,194 @@
+{% extends "default.html" %}
+{% block title %}Início{% endblock %}
+{% block content %}
+<!-- Hero Section -->
+    <div class="hero-area" id="home">
+        <div id="hero-slider-screen" class="owl-carousel owl-theme hero-slider-inner">
+            <div class="item">
+                <img src="{{ url_for('static', filename='img/banner-1.png') }}" alt="Life Bartenders Banner">
+                <div class="hero-caption">
+                    <div class="hero-caption-inner animated bounceInDown" data-wow-delay="0.9s" data-wow-duration="1s">
+                        <h1>Life Bartenders</h1>
+                        <p>Você sonha, nós realizamos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+    <!-- Service Section -->
+    <div class="service-area inner-padding2">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 foo">
+                    <div class="section-title-area">
+                        <h2 class="section-title">Sobre Nós</h2>
+                        <div class="section-divider"></div>
+                        <p>Somos uma empresa de Bartenders e aluguéis de estruturas de bar em Umuarama e região.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item foo">
+                        <img src="{{ url_for('static', filename='img/service-1.png') }}" alt="Serviço de Bartender">
+                        <div class="caption">
+                            <div class="caption-inner">
+                                <div class="caption-content">
+                                    <i class="fa fa-glass"></i>
+                                    <h3 class="service-title">Serviço de Bartender</h3>
+                                    <p>Serviço de bar completo, com estrutura, mão de obra e matéria-prima para se utilizar no evento.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item foo">
+                        <img src="{{ url_for('static', filename='img/service-2.png') }}" alt="Locação de Estruturas">
+                        <div class="caption">
+                            <div class="caption-inner">
+                                <div class="caption-content">
+                                    <i class="fa fa-building"></i>
+                                    <h3 class="service-title">Locação de Estruturas</h3>
+                                    <p>Locamos estruturas de Bar, utensílios e vários objetos de bar para decoração do seu evento.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-item foo">
+                        <img src="{{ url_for('static', filename='img/service-3.png') }}" alt="Cursos">
+                        <div class="caption">
+                            <div class="caption-inner">
+                                <div class="caption-content">
+                                    <i class="fa fa-graduation-cap"></i>
+                                    <h3 class="service-title">Cursos</h3>
+                                    <p>Ministramos cursos de Bartender pra quem tem vontade de conhecer sobre a área e começar seu próprio negócio.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Service Section -->
+
+    <!-- Event Section -->
+    <div class="event-area inner-padding">
+        <div class="event-area-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 foo">
+                        <div class="section-title-area-2">
+                            <h2 class="section-title">{{ next_event.title }}</h2>
+                            <div class="section-divider"></div>
+                            <p>Está aberta a contagem regressiva</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="upcoming foo">
+                            <span class="is-countdown"></span>
+                            <div data-countdown="{{ next_event.date.strftime('%Y-%m-%d %H:%M') }}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="event-btn">
+                            <a href="{{ url_for('site.agenda') }}" class="btn btn-default btn-sm-field" role="button">Saiba Mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Event Section -->
+    <!-- Jockey Section -->
+    <div class="jockey-area inner-padding3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 foo">
+                    <div class="section-title-area">
+                        <h2 class="section-title">Agenda</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 foo">
+                    <div id="jockey-slider-screen" class="owl-carousel owl-theme jockey-slider">
+                        {% for agenda in agendas %}
+                            <div class="item">
+                                <div class="jockey-feature">
+                                    <img src="{{ resized_img_src(agenda.cover, width='274', height='224', mode='crop') }}"
+                                        alt="{{ agenda.title }}" />
+                                    <div class="caption">
+                                        <div class="caption-inner">
+                                            <div class="caption-content">
+                                                <h3>{{ agenda.title }}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Jockey Section -->
+    <!-- Blog Section  -->
+    <div class="blog-area inner-padding3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 foo">
+                    <div class="section-title-area">
+                        <h2 class="section-title">Eventos</h2>
+                        <div class="section-divider"></div>
+                        <p>Veja como foram nossos últimos eventos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for evento in eventos %}
+                    <div class="col-12 col-md-6 col-lg-4 foo">
+                        <div class="post-row">
+                            <div class="post-header">
+                                <div class="post-feature">
+                                    <img src="{{ resized_img_src(evento.cover, width='600', height='675', mode='crop') }}" />
+                                </div>
+                            </div>
+                            <div class="post-body">
+                                <div class="post-caption">
+                                    <div class="post-caption-inner">
+                                        <div class="post-caption-content">
+                                            <div class="post-link"><a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug) }}" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
+                                            <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Dia: {{ evento.date.strftime("%d/%m/%Y") }}</div>
+                                            <h2 class="post-heading"><a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug) }}">{{ evento.title }}</a></h2>
+                                            <p>{{ evento.description[:150] }}...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-footer">
+                                <div class="post-footer-caption">
+                                    <div class="footer-caption-inner">
+                                        <h2 class="post-heading"><a href="blog-details-sidebar.html">{{ evento.title }}</a></h2>
+                                        <div class="post-sticker"><i class="fa fa-clock-o"></i>Dia: {{ evento.date.strftime("%d/%m/%Y") }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- End Blog Section  -->
+{% endblock %}

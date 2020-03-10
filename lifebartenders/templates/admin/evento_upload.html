@@ -1,0 +1,74 @@
+{% extends "admin/base.html" %}
+
+{% from "macros/formfields.html" import render_field %}
+
+{% block title_page %}Eventos{% endblock %}
+{% block title_section %}Upload de Imagens{% endblock %}
+{% block stylesheets %}
+<style>
+.row li.list_photos {
+  list-style-type: none;
+  width: 15%;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+img.img_event_photo {
+  border: 0 none;
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+</style>
+{% endblock %}
+{# https://stackoverflow.com/questions/35649770/how-to-upload-multiple-files-using-flask-in-python #}
+{% block content %}
+    <div class="row">
+      <div class="col-sm-12">
+      <p>Evento: {{ evento.title }}</p>
+      <p>Local: {{ evento.place }}</p>
+      <form action="" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          {{ form.hidden_tag() }}
+          {{ render_field(form.image) }}
+        </div>
+        <div class="form-group">{{ form.submit() }}</div>
+      </form>
+    </div>
+    <div class="row">
+      <div id="small-img" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 center">
+        <ul>
+          {% for photo in photos %}
+            <li class="list_photos" id="{{ photo.id }}">
+              <img src="{{ url_for('static', filename=photo.image) }}"
+                  title="photo {{ photo.id }}" alt="photo {{ photo.id }}"
+                  height="10%" id="{{ photo.id }}" class="img-responsive inline-block img_event_photo" />
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+<script type="text/javascript">
+$(document).ready(function(){
+    $("li.list_photos img").click(function(){
+        var photo_id = $(this).attr('id');
+        if (window.confirm("Deseja excluir a imagem "+photo_id+"?")){
+            $.ajax({
+                url: "{{ url_for('admin.delete_photo') }}",
+                data: {'id': photo_id},
+                type: "DELETE",
+                success: function(res){
+                    $('li.list_photos#'+photo_id).animate({width: 'toggle'}, 350);
+                }
+            });
+        }
+    });
+})
+</script>
+{% endblock %}

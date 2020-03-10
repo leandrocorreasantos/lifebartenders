@@ -1,0 +1,193 @@
+{% from "macros/navigation.html" import nav_link %}
+<!DOCTYPE html>
+<!--[if IE 9]>
+<html class="ie" lang="pt-br">
+<![endif]-->
+<html lang="pt-br">
+<head>
+    <!-- Basic Page Needs  -->
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %} | Life Bartenders</title>
+    <meta name="description" content="{% block meta_description%}Life Bartenders serviços de bartenders, aluguéis de equipamentos de som{% endblock %}">
+    <meta name="author" content="Leandro Correa dos Santos">
+    <meta name="keywords" content="{% block meta_keywords%}life, bartenders, bar, festas, eventos, shows, coquetéis, locação, som, garçons{% endblock %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Specific Mega  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <!--Owl Carousel CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <!--magnific popup CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+    <!-- Animated CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <!-- Meanmenu CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/meanmenu.css') }}">
+    <!-- Theme CSS-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/typography.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/favicon-lifebartenders.png') }}">
+</head>
+
+<body data-spy="scroll" data-target="#scroll-menu" data-offset="65">
+    <!-- Preloader -->
+    <div class="preloader-wrap">
+        <div class="preloader-inside">
+            <div class="spinner spinner-1">
+                <img src="{{ url_for('static', filename='img/logo-lifebartenders.png') }}" alt="Logo Life Bartenders">
+            </div>
+        </div>
+    </div>
+    <!-- End Preloader -->
+    <!-- Nav Section -->
+    <header class="header-area">
+        <!-- Nav Section -->
+        <nav class="navbar navbar-default navbar-fixed-top nav-area" id="scroll-menu">
+            <!-- Header Top Section -->
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="d-none d-md-block col-xl-6 col-lg-8 col-md-9">
+                            <ul class="online">
+                                <li><a href="#">Contato:<span>(44) 98457-5557</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-6 col-lg-4 col-md-3">
+                            <ul class="social-link">
+                                <li><a href="https://www.facebook.com/lifebartenderscascavel/" target="_blank"><i class="fa fa-facebook" target="_blank"></i></a></li>
+                                <li><a href="https://www.instagram.com/lifebartenders/" target="_blank"><i class="fa fa-instagram" target="_blank"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Header Top Section -->
+            <div class="container">
+                <div class="logo-menu-wrap">
+                    <div class="logo">
+                        <a href="index.html"><img src="{{ url_for('static', filename='img/logo-lifebartenders.png') }}" alt="Logo Life Bartenders"></a>
+                    </div>
+                    <div class="main-menu main-menu-mrg1">
+                        <nav>
+                            <ul>
+                                {{ nav_link('site.index', 'Home') }}
+                                {{ nav_link('site.quem_somos', 'Quem Somos') }}
+                                {{ nav_link('site.agenda', 'Agenda') }}
+                                {{ nav_link('site.eventos', 'Eventos') }}
+                                {{ nav_link('site.contato', 'Contato') }}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="mobile-menu-area">
+                    <div class="mobile-menu">
+                        <nav id="mobile-menu-active">
+                            <ul class="menu-overflow">
+                                {{ nav_link('site.index', 'Home') }}
+                                {{ nav_link('site.quem_somos', 'Quem Somos') }}
+                                {{ nav_link('site.agenda', 'Agenda') }}
+                                {{ nav_link('site.eventos', 'Eventos') }}
+                                {{ nav_link('site.contato', 'Contato') }}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End Nav Section -->
+    {% block content %}{% endblock %}
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-area footer-area2 foo" data-sr='bottom'>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="company-logo">
+                            <img class="" src="{{ url_for('static', filename='img/logo-lifebartenders.png') }}" alt="Logo Life Bartenders">
+                        </div>
+                        <div class="footer-content">
+                            <ul class="address-list">
+                                <li>
+                                    <i class="fa fa-map-marker"></i>
+                                    <p>RUA DOMINGOS CANO LOPES, 2406, JARDIM VENEZA II <br /> Umuarama - PR</p>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    <p>Whatsapp:</p>
+                                    <p>(44) 98457-5557</p>
+                                </li>
+                                <li>
+                                    <i class="fa fa-globe"></i>
+                                    <em>&nbsp;</em>
+                                    <p>contato@lifebartenders.com.br</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 ml-auto mr-auto">
+                        <h4 class="footer-title">ATENDIMENTO</h4>
+                        <div class="footer-content">
+                            <div class="opening-time">
+                                <p><strong>Segunda a Sexta: </strong> <small>das 8h às 18h</small></p>
+                                <p><strong>Sábado: </strong> <small>das 8h às 12h</small></p>
+                                <!-- <p><strong>Sunday: </strong> <small>10.00 to 16.00</small></p> -->
+                                <p>Every friday of week dolor sit amet, cons ctetur adipisi cing elit.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 ml-auto mr-auto">
+                        <h4 class="footer-title">REDES SOCIAIS</h4>
+                        <p>Curta nossa fan page no Facebook e siga nosso perfil no Instagram para acompanhar nosso trabalho de perto.</p>
+                        <div class="footer-content">
+                            <ul class="footer-social-link social-link-left">
+                                <li><a href="https://www.facebook.com/lifebartenderscascavel/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.instagram.com/lifebartenders/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Ends Footer Section -->
+    <!-- Copyright Section -->
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright">Copyright © 2020 <a href="https://leandrocorreasantos.github.io">Leandro Santos.</a> All Right Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Ends Copyright Section -->
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/jquery-2.1.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scrollreveal.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/meanmenu.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/countdown.js') }}"></script>
+    <!-- Magnific Popup js -->
+    <script src="{{ url_for('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+    <!-- Isotope Js -->
+    <script src="{{ url_for('static', filename='js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/isotope_custom.js') }}"></script>
+    <!-- Masonary Js -->
+    <script src="{{ url_for('static', filename='js/masonry.pkgd.min.js') }}"></script>
+    <!-- jquery gridrotator js -->
+    <script src="{{ url_for('static', filename='js/modernizr.custom.26633.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.gridrotator.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

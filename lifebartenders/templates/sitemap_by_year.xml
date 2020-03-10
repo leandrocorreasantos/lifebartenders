@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for evento in eventos %}
+    <url>
+        <loc>{{ site }}{{ url_for('site.agenda_view', evento_slug=evento.slug, evento_id=evento.id) }}</loc>
+        <lastmod>{{evento.date}}</lastmod>
+        <priority>0.7</priority>
+    </url>
+    {% endfor %}
+</urlset>

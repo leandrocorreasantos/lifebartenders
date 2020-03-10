@@ -1,0 +1,84 @@
+{% extends "default.html" %}
+{% block title %}Agenda{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <div class="page-header" id="home">
+        <div class="header-caption">
+            <div class="header-caption-contant">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-caption-inner">
+                                <h1>Agenda</h1>
+                                <p><a href="/"> Home </a> // Agenda</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+    <!-- Event Section -->
+    <div class="event-area inner-padding2">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 foo">
+                    <div class="section-title-area">
+                        <h2 class="section-title">Próximo Evento</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-6">
+                    <div class="left-box">
+                        <div class="event-feature2">
+                            <img src="{{ resized_img_src(next_event.cover, width='600', height='515', mode='crop') }}" alt="{{ next_event.title }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <div class="right-box">
+                        <div class="short-content">
+                            <h4 class="event-name">{{ next_event.title }}</h4>
+                            <p>{{ next_event.description }}</p>
+                        </div>
+                        <div class="upcoming">
+                            <span class="is-countdown"></span>
+                            <div data-countdown="{{ next_event.date.strftime('%Y-%m-%d %H:%M') }}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Event Section -->
+    <!-- Popular Blog Section  -->
+    <div class="popular-event-area inner-padding3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 foo">
+                    <div class="section-title-area">
+                        <h2 class="section-title">Próximos Eventos</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for agenda in agendas %}
+                    <div class="col-12 col-md-6 col-lg-3 foo">
+                        <div class="popular-event">
+                            <div class="event-feature2">
+                                <img src="{{ resized_img_src(agenda.cover, width='600', height='598', mode='crop') }}" alt="{{ agenda.title }}">
+                            </div>
+                            <a href="#" class="event-name">{{ agenda.title }}</a>
+                            <div class="date-sticker2">{{ agenda.date.strftime('%d/%m/%Y %H:%M') }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- End Popular Blog Section -->
+{% endblock %}

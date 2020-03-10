@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+  web:
+    container_name: lifebartenders
+    image: python:3.6
+    volumes:
+      - .:/home/application/current
+    working_dir: /home/application/current
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    command: tail -f /dev/null
+  db:
+    image: mysql:5.7
+    ports:
+      - '3306:3306'
+    environment:
+        MYSQL_DATABASE: 'lifebartenders'
+        MYSQL_USER: 'lifebartenders'
+        MYSQL_PASSWORD: '123456'
+        MYSQL_ROOT_PASSWORD: '123456'
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
