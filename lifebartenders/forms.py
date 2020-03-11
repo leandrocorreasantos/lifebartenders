@@ -1,9 +1,12 @@
-from flask_wtf import FlaskForm
 from wtforms import (
     DateTimeField, BooleanField, SelectField, TextAreaField,
     StringField, SubmitField, HiddenField, FileField, validators
 )
 from lifebartenders.models import Event, EventPhoto, State, City
+try:
+    from flask_wtf import FlaskForm
+except ImportError:
+    from flask_wtf import Form as FlaskForm
 
 
 class EventForm(FlaskForm):
