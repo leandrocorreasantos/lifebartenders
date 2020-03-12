@@ -14,7 +14,7 @@ if os.path.isfile(dotenv_path):
     load_dotenv(dotenv_path)
 
 
-app = Flask(__name__)
+app = Flask('lifebartenders')
 app.config.from_object('lifebartenders.config')
 
 db = SQLAlchemy(app)
