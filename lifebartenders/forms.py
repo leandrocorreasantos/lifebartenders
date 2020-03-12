@@ -2,7 +2,7 @@ from wtforms import (
     DateTimeField, BooleanField, SelectField, TextAreaField,
     StringField, SubmitField, HiddenField, FileField, validators
 )
-from lifebartenders.models import Event, EventPhoto, State, City
+from lifebartenders.models import Event, EventPhoto
 try:
     from flask_wtf import FlaskForm
 except ImportError:
@@ -20,11 +20,11 @@ class EventForm(FlaskForm):
     visible = BooleanField('Visível', default=True)
     cover = FileField('Capa')
     state = SelectField(
-        'Estado', choices=[(s.id, s.name) for s in State.query.all()],
+        'Estado', choices=[],
         id='Event.states', coerce=int
     )
     city_id = SelectField(
-        'Cidade', choices=[(c.id, c.name) for c in City.query.all()],
+        'Cidade', choices=[],
         id='Event.cities', coerce=int
     )
     submit = SubmitField('Enviar')
