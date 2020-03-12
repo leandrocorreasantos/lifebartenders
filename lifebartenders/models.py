@@ -9,6 +9,7 @@ class BaseModel:
 
 class User(db.Model, BaseModel, UserMixin):
     __tablename__ = 'users'
+    __table_args__ = {'extend_existing': True}
 
     username = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
