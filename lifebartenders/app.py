@@ -5,11 +5,10 @@ from lifebartenders.views.admin import admin
 from lifebartenders.models import User
 from flask_user import UserManager
 
+user_manager = UserManager(app, db, User)
+
 app.register_blueprint(site)
 app.register_blueprint(admin)
-
-
-user_manager = UserManager(app, db, User)
 
 
 @app.errorhandler(404)
