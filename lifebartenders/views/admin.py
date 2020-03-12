@@ -14,11 +14,23 @@ from lifebartenders.config import (
 )
 from lifebartenders.models import Event, EventPhoto, City, State
 from lifebartenders.forms import EventForm, EventUploadForm
-from lifebartenders.schemas import CitiesSchema
+from lifebartenders.schemas import CitiesSchema, StatesSchema
 
 
 admin = Blueprint('admin', 'lifebartenders', url_prefix='/admin')
 OFFSET = int(os.environ.get('OFFSET_PAGINATOR', 20))
+
+
+@admin.route('/_get_states')
+def get_states():
+    states = []
+    response = {}
+    states = State.query.all()
+    response = make_response(
+        jsonify(StatesSchema(many=True, only=('id', 'name')).dump(states))
+    )
+    response.content_type = 'application/json'
+    return response
 
 
 @admin.route('/_get_cities/<state_id>')

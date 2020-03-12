@@ -11,23 +11,48 @@
 $(document).ready(function(){
     // masks
     $("#date").mask("00/00/0000 00:00");
-    // function to get cities by state_id
-    function update_cities(state_id){
-        $("select[name='city_id']").attr('disabled', 'disabled');
+
+    // function to get all states
+    function get_states(){
+        var state_field = $("select[name='state']");
+        state_field.attr('disabled', 'disabled');
         $.getJSON(
-            "/admin/_get_cities/"+state_id,
+            "/admin/_get_states",
             function(resp){
-                $("select[name='city_id']").empty();
+                state_field.empty();
                 resp.forEach(function(item){
-                    // marcar atual cidde, se o estado atual for selecionado
-                    $("select[name='city_id']").append(
+                    // colocar todos os estados no campo
+                    state_field.append(
                         $('<option>').attr('value', item.id).text(item.name)
                     )
                 });
-                $("select[name='city_id']").removeAttr('disabled');
+                state_field.removeAttr('disabled');
             }
-        );
+        )
     }
+
+    // function to get cities by state_id
+    function update_cities(state_id=''){
+        if(state_id != ''){
+            $("select[name='city_id']").attr('disabled', 'disabled');
+            $.getJSON(
+                "/admin/_get_cities/"+state_id,
+                function(resp){
+                    $("select[name='city_id']").empty();
+                    resp.forEach(function(item){
+                        // marcar atual cidde, se o estado atual for selecionado
+                        $("select[name='city_id']").append(
+                            $('<option>').attr('value', item.id).text(item.name)
+                        )
+                    });
+                    $("select[name='city_id']").removeAttr('disabled');
+                }
+            );
+        }
+    }
+
+    // on load
+    get_states();
 
     // on change trigger
     $("select[name='state']").change(function(){

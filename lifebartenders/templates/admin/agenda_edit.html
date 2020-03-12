@@ -35,13 +35,26 @@ $(document).ready(function(){
         );
     }
 
+
     function select_state(state_id){
-        $("select[name='state'] option").each(function(){
-            if ($(this).val() == state_id){
-                $(this).attr('selected', 'selected');
+        var state_field = $("select[name='state']");
+        state_field.attr('disabled', 'disabled');
+        $.getJSON(
+            "/admin/_get_states",
+            function(resp){
+                state_field.empty();
+                resp.forEach(function(item){
+                    // colocar todos os estados no campo
+                    state_option = $('<option>').attr('value', item.id).text(item.name);
+                    if (item.id == state_id){
+                        state_option.attr('selected', 'selected');
+                    }
+                    state_field.append(state_option);
+                });
+                state_field.removeAttr('disabled');
             }
-        });
-        update_cities($("select[name='state']").val());
+        )
+        update_cities(state_id);
     }
 
     function select_city(city_id){
