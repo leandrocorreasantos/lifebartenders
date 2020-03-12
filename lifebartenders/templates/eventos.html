@@ -37,7 +37,7 @@
                             <div class="event-feature2">
                                 <img src="{{ resized_img_src(evento.cover, width='600', height='598', mode='crop') }}" alt="{{ evento.title }}">
                             </div>
-                            <a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug) }}" class="event-name">{{ evento.title }}</a>
+                            <a href="{{ url_for('agenda_view', evento_id=evento.id, evento_slug=evento.slug) }}" class="event-name">{{ evento.title }}</a>
                             <div class="date-sticker2">{{ evento.date.strftime("%d/%m/%Y") }}</div>
                         </div>
                     </div>

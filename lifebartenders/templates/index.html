@@ -100,7 +100,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="event-btn">
-                            <a href="{{ url_for('site.agenda') }}" class="btn btn-default btn-sm-field" role="button">Saiba Mais</a>
+                            <a href="{{ url_for('agenda') }}" class="btn btn-default btn-sm-field" role="button">Saiba Mais</a>
                         </div>
                     </div>
                 </div>
@@ -168,9 +168,9 @@
                                 <div class="post-caption">
                                     <div class="post-caption-inner">
                                         <div class="post-caption-content">
-                                            <div class="post-link"><a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug) }}" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
+                                            <div class="post-link"><a href="{{ url_for('agenda_view', evento_id=evento.id, evento_slug=evento.slug) }}" class="btn btn-default link-btn"><i class="fa fa-link"></i></a></div>
                                             <div class="post-sticker hidden-xs"><i class="fa fa-clock-o"></i>Dia: {{ evento.date.strftime("%d/%m/%Y") }}</div>
-                                            <h2 class="post-heading"><a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug) }}">{{ evento.title }}</a></h2>
+                                            <h2 class="post-heading"><a href="{{ url_for('agenda_view', evento_id=evento.id, evento_slug=evento.slug) }}">{{ evento.title }}</a></h2>
                                             <p>{{ evento.description[:150] }}...</p>
                                         </div>
                                     </div>

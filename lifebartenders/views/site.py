@@ -9,8 +9,7 @@ from lifebartenders import mail, log
 from lifebartenders.config import SITE_URL
 from flask_mail import Message
 
-
-site = Blueprint('site', 'lifebartenders')
+site = Blueprint('site', __name__)
 
 
 @site.route('/')

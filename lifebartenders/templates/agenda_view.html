@@ -52,11 +52,11 @@
                 <div class="col-12">
                     <div class="gallery-btn">
                         {% if fotos.has_prev %}
-                            <a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug, page=fotos.prev_num) }}" class="btn btn-default btn-sm-field" role="button"> &laquo;</a>
+                            <a href="{{ url_for('agenda_view', evento_id=evento.id, evento_slug=evento.slug, page=fotos.prev_num) }}" class="btn btn-default btn-sm-field" role="button"> &laquo;</a>
                         {% endif %}
                         <div class="btn btn-default btn-sm-field" role="button">{{ fotos.page }}</div>
                         {% if fotos.has_next %}
-                            <a href="{{ url_for('site.agenda_view', evento_id=evento.id, evento_slug=evento.slug, page=fotos.next_num) }}" class="btn btn-default btn-sm-field" role="button"> &raquo;</a>
+                            <a href="{{ url_for('agenda_view', evento_id=evento.id, evento_slug=evento.slug, page=fotos.next_num) }}" class="btn btn-default btn-sm-field" role="button"> &raquo;</a>
                         {% endif %}
 
                     </div>
