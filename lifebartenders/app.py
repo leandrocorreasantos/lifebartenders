@@ -1,10 +1,15 @@
 from flask import render_template
-from lifebartenders import app
+from lifebartenders import app, db
 from lifebartenders.views.site import site
 from lifebartenders.views.admin import admin
+from lifebartenders.models import User
+from flask_user import UserManager
 
 app.register_blueprint(site)
 app.register_blueprint(admin)
+
+
+user_manager = UserManager(app, db, User)
 
 
 @app.errorhandler(404)

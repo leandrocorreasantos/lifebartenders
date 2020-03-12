@@ -1,5 +1,5 @@
-from lifebartenders import app, db
-from flask_user import UserMixin, UserManager
+from lifebartenders import db
+from flask_user import UserMixin  # , UserManager
 from datetime import datetime
 
 
@@ -16,9 +16,6 @@ class User(db.Model, BaseModel, UserMixin):
     active = db.Column(db.Boolean(), default=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     email_confirmed_at = db.Column(db.Boolean, default=False)
-
-
-user_manager = UserManager(app, db, User)
 
 
 class State(db.Model, BaseModel):
