@@ -20,7 +20,6 @@ app.config.from_object('lifebartenders.config')
 db = SQLAlchemy(app)
 mail = Mail(app)
 images = Images(app)
-# user_manager = UserManager(app, db, 'User')
 
 handler = logging.StreamHandler(sys.stdout)
 if not app.debug:
