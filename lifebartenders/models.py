@@ -72,9 +72,8 @@ class Event(db.Model, BaseModel):
             self.date.strftime('%d-%m-%Y')
         )
 
-    @classmethod
-    def next_event(cls):
-        return cls.query.filter(
+    def next_event(self):
+        return self.query.filter(
             Event.date > datetime.now()
         ).order_by(
             Event.date
