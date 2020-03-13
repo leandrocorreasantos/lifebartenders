@@ -44,6 +44,11 @@ login_manager.login_view = 'login'
 login_manager.session_protection = 'basic'
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
+
 @app.route('/')
 @app.route('/home')
 def index():
@@ -196,11 +201,6 @@ def not_found(error):
     return render_template('404.html'), 404
 
 # admin views
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(user_id)
 
 
 @app.route('/admin/login', methods=['GET', 'POST'])
