@@ -191,7 +191,7 @@ def not_found(error):
 OFFSET = int(os.environ.get('OFFSET_PAGINATOR', 20))
 
 
-@app.route('/_get_states')
+@app.route('/admin/_get_states')
 @login_required
 def get_states():
     states = []
@@ -204,7 +204,7 @@ def get_states():
     return response
 
 
-@app.route('/_get_cities/<state_id>')
+@app.route('/admin/_get_cities/<state_id>')
 @login_required
 def get_cities(state_id):
     cities = []

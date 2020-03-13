@@ -14,16 +14,34 @@ if os.path.isfile(dotenv_path):
     from dotenv import load_dotenv
     load_dotenv(dotenv_path)
 
-app = Flask(__name__)
-app.config.from_object('lifebartenders.config')
+# app = Flask(__name__)
+# app.config.from_object('lifebartenders.config')
 
-db = SQLAlchemy(app)
-mail = Mail(app)
-images = Images(app)
-user_manager = UserManager(app, db, 'User')
+# db = SQLAlchemy(app)
+# mail = Mail(app)
+# images = Images(app)
+# user_manager = UserManager(app, db, 'User')
+db = SQLAlchemy()
+mail = Mail()
+images = Images()
+
+
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object('lifebartenders.config')
+    db.init_app(app)
+    mail.init_app(app)
+    images.init_app(app)
+    from lifebartenders.models import User
+    user_manager = UserManager(app, db, User)  # noqa
+    return app
+
+app = create_app()
+
+# print(app.__dict__)
 
 handler = logging.StreamHandler(sys.stdout)
-if not app.debug:
+if not app.config.get('DEBUG'):
     handler = logging.handlers.RotatingFileHandler(
         'app.log', maxBytes=102400, backupCount=3
     )
