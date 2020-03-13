@@ -4,7 +4,7 @@
 {% block title_section %}Agenda{% endblock %}
 {% block toolbar_buttons %}
 <div class="btn-group mr-2">
-  <a href="{{ url_for('admin.add_agenda') }}" role="button" class="btn btn-primary btn-sm">Novo Evento</a>
+  <a href="{{ url_for('add_agenda') }}" role="button" class="btn btn-primary btn-sm">Novo Evento</a>
 </div>
 {% endblock %}
 {% block content %}
@@ -27,7 +27,7 @@
         <td>{{ agenda.place }}</td>
         <td>{{ agenda.date.strftime("%d/%m/%Y %H:%M") }}</td>
         <td class="list-inline">
-         <a href="{{ url_for('admin.edit_agenda', event_id=agenda.id) }}"
+         <a href="{{ url_for('edit_agenda', event_id=agenda.id) }}"
          role="button" class="btn btn-dark btn-sm list-inline-item">
          <span class="fa fa-edit"></span>
        </a>

@@ -60,7 +60,7 @@ $(document).ready(function(){
         var photo_id = $(this).attr('id');
         if (window.confirm("Deseja excluir a imagem "+photo_id+"?")){
             $.ajax({
-                url: "{{ url_for('admin.delete_photo') }}",
+                url: "{{ url_for('delete_photo') }}",
                 data: {'id': photo_id},
                 type: "DELETE",
                 success: function(res){

@@ -3,6 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_images import Images
+# from flask_user import UserManager
 import logging
 import logging.config
 import sys
@@ -13,15 +14,13 @@ if os.path.isfile(dotenv_path):
     from dotenv import load_dotenv
     load_dotenv(dotenv_path)
 
-
 app = Flask('lifebartenders')
 app.config.from_object('lifebartenders.config')
 
 db = SQLAlchemy(app)
-
 mail = Mail(app)
-
 images = Images(app)
+# user_manager = UserManager(app, db, 'User')
 
 handler = logging.StreamHandler(sys.stdout)
 if not app.debug:
