@@ -13,11 +13,10 @@ from lifebartenders import mail, log
 from lifebartenders.config import SITE_URL
 from flask_mail import Message
 
-user_manager = UserManager(app, db, User)
 
-
-# app.register_blueprint(site)
 app.register_blueprint(admin)
+
+user_manager = UserManager(app, db, User)
 
 
 @app.route('/')
