@@ -13,7 +13,6 @@ from flask import (
 from werkzeug.utils import secure_filename
 from lifebartenders import app, db
 from lifebartenders.models import (
-    User,
     Event,
     EventPhoto,
     State,
@@ -23,7 +22,7 @@ from lifebartenders.schemas import (
     StatesSchema,
     CitiesSchema
 )
-from flask_user import UserManager, login_required
+from flask_user import login_required
 from sqlalchemy import distinct
 from sqlalchemy.sql.expression import extract
 from lifebartenders import mail, log
@@ -34,9 +33,6 @@ from lifebartenders.config import (
 from lifebartenders.utils import valid_extension
 from lifebartenders.forms import ContatoForm, EventForm, EventUploadForm
 from flask_mail import Message
-
-
-user_manager = UserManager(app, db, User)
 
 
 @app.route('/')

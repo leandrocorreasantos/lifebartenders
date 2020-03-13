@@ -1,5 +1,5 @@
-from lifebartenders import db
-from flask_user import UserMixin  # , UserManager
+from lifebartenders import app, db
+from flask_user import UserMixin, UserManager
 from datetime import datetime
 
 
@@ -19,6 +19,9 @@ class User(db.Model, BaseModel, UserMixin):
 
     def __repr__(self):
         return self.username
+
+
+user_manager = UserManager(app, db, User)
 
 
 class State(db.Model, BaseModel):
