@@ -22,7 +22,7 @@
         <td>{{ agenda.place }}</td>
         <td>{{ agenda.date.strftime("%d/%m/%Y %H:%M") }}</td>
         <td class="list-inline">
-          <a href="{{url_for('admin.edit_agenda', event_id=agenda.id)}}"
+          <a href="{{url_for('edit_agenda', event_id=agenda.id)}}"
           role="button" class="btn btn-dark btn-sm list-inline-item">
           <span class="fa fa-edit"></span>
         </a>
@@ -56,12 +56,12 @@
         <td>{{ evento.place }}</td>
         <td>{{ evento.date.strftime("%d/%m/%Y %H:%M") }}</td>
         <td class="list-inline">
-          <a href="{{url_for('admin.upload_evento', event_id=evento.id)}}"
+          <a href="{{url_for('upload_evento', event_id=evento.id)}}"
           role="button" class="btn btn-dark btn-sm list-inline-item"
           title="Upload" alt="Upload">
           <span class="fa fa-image"></span>
         </a>
-        <a href="{{url_for('admin.edit_agenda', event_id=evento.id)}}"
+        <a href="{{url_for('edit_agenda', event_id=evento.id)}}"
         role="button" class="btn btn-dark btn-sm list-inline-item"
         title="Editar" alt="Editar">
         <span class="fa fa-edit"></span>

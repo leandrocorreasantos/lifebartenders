@@ -1,5 +1,5 @@
 from lifebartenders import db
-from flask_user import UserMixin
+from flask_user import UserMixin  # , UserManager
 from datetime import datetime
 
 
