@@ -12,7 +12,7 @@ from flask import (
 )
 from werkzeug.utils import secure_filename
 from werkzeug.urls import url_parse
-from lifebartenders import app, db, login_manager
+from lifebartenders import app, db
 from lifebartenders.models import (
     Event,
     EventPhoto,
@@ -24,7 +24,7 @@ from lifebartenders.schemas import (
     StatesSchema,
     CitiesSchema
 )
-from flask_login import login_required, login_user, logout_user
+from flask_login import LoginManager, login_required, login_user, logout_user
 from sqlalchemy import distinct
 from sqlalchemy.sql.expression import extract
 from lifebartenders import mail, log
@@ -37,6 +37,11 @@ from lifebartenders.forms import (
     ContatoForm, EventForm, EventUploadForm, LoginForm
 )
 from flask_mail import Message
+
+
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+login_manager.session_protection = 'basic'
 
 
 @app.route('/')

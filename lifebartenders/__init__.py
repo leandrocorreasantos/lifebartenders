@@ -3,7 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_images import Images
-from flask_login import LoginManager
+# from flask_login import LoginManager
 import logging
 import logging.config
 import sys
@@ -19,9 +19,6 @@ app.config.from_object('lifebartenders.config')
 db = SQLAlchemy(app)
 mail = Mail(app)
 images = Images(app)
-login_manager = LoginManager(app)
-login_manager.login_view = 'login'
-login_manager.session_protection = 'basic'
 
 handler = logging.StreamHandler(sys.stdout)
 if not app.config.get('DEBUG'):
