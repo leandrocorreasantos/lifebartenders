@@ -17,6 +17,9 @@ class User(db.Model, BaseModel, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     email_confirmed_at = db.Column(db.Boolean, default=False)
 
+    def __repr__(self):
+        return self.username
+
 
 class State(db.Model, BaseModel):
     __tablename__ = 'states'

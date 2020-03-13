@@ -17,7 +17,7 @@ from lifebartenders.forms import EventForm, EventUploadForm
 from lifebartenders.schemas import CitiesSchema, StatesSchema
 
 
-admin = Blueprint('admin', 'lifebartenders', url_prefix='/admin')
+admin = Blueprint('admin', __name__, url_prefix='/admin')
 OFFSET = int(os.environ.get('OFFSET_PAGINATOR', 20))
 
 
