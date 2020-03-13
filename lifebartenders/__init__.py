@@ -3,7 +3,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_images import Images
-from flask_user import UserManager
 import logging
 import logging.config
 import sys
@@ -14,22 +13,11 @@ if os.path.isfile(dotenv_path):
     from dotenv import load_dotenv
     load_dotenv(dotenv_path)
 
-db = SQLAlchemy()
-mail = Mail()
-images = Images()
-
-
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object('lifebartenders.config')
-    db.init_app(app)
-    mail.init_app(app)
-    images.init_app(app)
-    from lifebartenders.models import User
-    user_manager = UserManager(app, db, User)  # noqa
-    return app
-
-app = create_app()
+app = Flask(__name__)
+app.config.from_object('lifebartenders.config')
+db = SQLAlchemy(app)
+mail = Mail(app)
+images = Images(app)
 
 handler = logging.StreamHandler(sys.stdout)
 if not app.config.get('DEBUG'):
