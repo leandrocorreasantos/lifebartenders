@@ -11,18 +11,20 @@ from flask import (
     jsonify
 )
 from werkzeug.utils import secure_filename
+from werkzeug.urls import url_parse
 from lifebartenders import app, db
 from lifebartenders.models import (
     Event,
     EventPhoto,
     State,
-    City
+    City,
+    User
 )
 from lifebartenders.schemas import (
     StatesSchema,
     CitiesSchema
 )
-from flask_user import login_required
+from flask_login import login_required, login_user, logout_user
 from sqlalchemy import distinct
 from sqlalchemy.sql.expression import extract
 from lifebartenders import mail, log
@@ -31,7 +33,9 @@ from lifebartenders.config import (
     UPLOAD_FOLDER, UPLOAD_DEST, basedir, SITE_URL
 )
 from lifebartenders.utils import valid_extension
-from lifebartenders.forms import ContatoForm, EventForm, EventUploadForm
+from lifebartenders.forms import (
+    ContatoForm, EventForm, EventUploadForm, LoginForm
+)
 from flask_mail import Message
 
 
@@ -187,6 +191,30 @@ def not_found(error):
     return render_template('404.html'), 404
 
 # admin views
+
+
+@app.route('/admin/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter(
+            User.username == form.username.data
+        ).first()
+        if user is None or not user.check_password(form.password.data):
+            flash("Usuário ou senha inválidos", "error")
+            return redirect(url_for('login'))
+        login_user(user)
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('index')
+        return redirect(next_page)
+    return render_template('admin/login.html', form=form)
+
+
+@app.route('/admin/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 OFFSET = int(os.environ.get('OFFSET_PAGINATOR', 20))
 

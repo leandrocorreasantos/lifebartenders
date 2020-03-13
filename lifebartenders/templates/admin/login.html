@@ -1,0 +1,20 @@
+{% extends 'admin/base_login.html' %}
+{% from "macros/formfields.html" import render_field %}
+{% block title_page %}Login{% endblock %}
+{% block title_section %}Login{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                {{ form.hidden_tag() }}
+                {{ render_field(form.username) }}
+                {{ render_field(form.password) }}
+            </div>
+            <div class="form-group">{{ form.submit() }}</div>
+        </form>
+        <p class="mt-5 mb-3 text-muted">Copyright © 2020 <a href="https://leandrocorreasantos.github.io">Leandro Santos.</a>
+        All Right Reserved.</p>
+    </div>
+</div>
+{% endblock %}

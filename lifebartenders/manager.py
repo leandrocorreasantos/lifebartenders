@@ -4,7 +4,7 @@ import csv
 from lifebartenders import app, db, log
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
-from models import City, State, User, user_manager
+from models import City, State, User
 
 
 migrate = Migrate(app, db)
@@ -18,11 +18,12 @@ def seed():
     # seed user
     user = User(**{
         'username': 'admin',
-        'password': user_manager.hash_password('Life#bartenders'),
         'email': 'admin@lifebartenders.com',
         'active': True,
         'email_confirmed_at': True
     })
+    # 'password': User.set_password('Life#bartenders'),
+    user.set_password('Life#bartenders')
     db.session.add(user)
     db.session.commit()
 

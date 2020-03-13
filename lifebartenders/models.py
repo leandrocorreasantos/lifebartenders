@@ -1,6 +1,8 @@
-from lifebartenders import app, db
-from flask_user import UserMixin, UserManager
+from lifebartenders import db
+from flask_login import UserMixin
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
+from lifebartenders import login_manager
 
 
 class BaseModel:
@@ -20,8 +22,16 @@ class User(db.Model, BaseModel, UserMixin):
     def __repr__(self):
         return self.username
 
+    def set_password(self, new_password):
+        self.password = generate_password_hash(new_password)
 
-user_manager = UserManager(app, db, User)
+    def check_password(self, typed_password):
+        return check_password_hash(self.password, typed_password)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 class State(db.Model, BaseModel):

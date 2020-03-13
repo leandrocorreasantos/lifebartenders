@@ -1,6 +1,7 @@
 from wtforms import (
     DateTimeField, BooleanField, SelectField, TextAreaField,
-    StringField, SubmitField, HiddenField, FileField, validators
+    StringField, SubmitField, HiddenField, FileField, PasswordField,
+    validators
 )
 from lifebartenders.models import Event, EventPhoto
 try:
@@ -48,3 +49,16 @@ class ContatoForm(FlaskForm):
     ])
     mensagem = TextAreaField('Mensagem')
     submit = SubmitField('Enviar Mensagem')
+
+
+class LoginForm(FlaskForm):
+
+    username = StringField(
+        'Username',
+        validators=[validators.DataRequired()]
+    )
+    password = PasswordField(
+        'Password',
+        validators=[validators.DataRequired()]
+    )
+    submit = SubmitField('Login')
