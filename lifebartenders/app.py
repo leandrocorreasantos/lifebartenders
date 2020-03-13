@@ -12,7 +12,7 @@ from flask import (
 )
 from werkzeug.utils import secure_filename
 from werkzeug.urls import url_parse
-from lifebartenders import app, db
+from lifebartenders import app, db, login_manager
 from lifebartenders.models import (
     Event,
     EventPhoto,
@@ -191,6 +191,11 @@ def not_found(error):
     return render_template('404.html'), 404
 
 # admin views
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 @app.route('/admin/login', methods=['GET', 'POST'])

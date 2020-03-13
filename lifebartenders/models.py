@@ -1,4 +1,4 @@
-from lifebartenders import db, login_manager
+from lifebartenders import db
 from flask_login import UserMixin
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -26,11 +26,6 @@ class User(db.Model, BaseModel, UserMixin):
 
     def check_password(self, typed_password):
         return check_password_hash(self.password, typed_password)
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(user_id)
 
 
 class State(db.Model, BaseModel):
