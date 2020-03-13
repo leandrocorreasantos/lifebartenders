@@ -1,8 +1,7 @@
-from lifebartenders import db
+from lifebartenders import db, login_manager
 from flask_login import UserMixin
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-from lifebartenders import login_manager
 
 
 class BaseModel:
