@@ -52,7 +52,11 @@ def load_user(user_id):
 @app.route('/')
 @app.route('/home')
 def index():
-    next_event = Event.next_event()
+    next_event = Event.query.filter(
+        Event.date > datetime.now()
+    ).order_by(
+        Event.date
+    ).first()
 
     agendas = Event.query.filter(
         Event.date > datetime.now()
